@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace BAMS
 {
     public partial class Login : Form 
@@ -29,8 +30,9 @@ namespace BAMS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //MainPage m = new MainPage();
-            //m.show();
+            this.Hide();
+            Form2 m = new Form2();
+            m.Show();
         }
     }
 }
