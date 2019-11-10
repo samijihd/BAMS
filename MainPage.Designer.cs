@@ -1,6 +1,6 @@
 ﻿namespace BAMS
 {
-    partial class Form1
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.
@@ -16,7 +16,6 @@
             if (disposing && (components != null))
             {
                 components.Dispose();
-
             }
             base.Dispose(disposing);
         }
@@ -31,15 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Yellow;
-            this.ClientSize = new System.Drawing.Size(1248, 646);
-            this.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1073, 727);
+            this.Name = "Form2";
+            this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
 
         }
@@ -47,4 +45,3 @@
         #endregion
     }
 }
-
