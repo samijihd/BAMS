@@ -14,6 +14,8 @@ namespace BAMS
 {
     public partial class Login : Form 
     {
+        public static string user;
+        public string password;
         public Login()
         {
             InitializeComponent();
@@ -53,8 +55,10 @@ namespace BAMS
 
         private void button_WOC1_Click(object sender, EventArgs e)
         {
+            user = tbUser.text.Trim();
+            password = tbPassword.text.Trim();
             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-M9RBD6L\SSQL;Initial Catalog=BAM_db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            string query = "select * from tblClient where ID ='"+tbUser.text.Trim()+"' and Password = '"+tbPassword.text.Trim()+"'";
+            string query = "select * from tblClient where Username ='"+user+"' and Password = '"+password+"'";
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);

@@ -12,6 +12,7 @@ namespace BAMS
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
@@ -22,13 +23,14 @@ namespace BAMS
             MoveSidePanel(btn6);
             MoveSidePanel(btn7);
             MoveSidePanel(btnDashboard);
+            label2.Text = Login.user;
         }
 
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btnDashboard);
             hidepanels();
-            flowLayoutPanel1.Visible = true;
+            //flowLayoutPanel1.Visible = true;
         }
 
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
@@ -42,7 +44,7 @@ namespace BAMS
         }
         private void hidepanels()
         {
-            flowLayoutPanel1.Visible = false;
+            //flowLayoutPanel1.Visible = false;
         }
         private void MoveSidePanel(Control c)
         {
@@ -98,6 +100,25 @@ namespace BAMS
         private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            label2.Text = Login.user;
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            panel1.AutoScroll = false;
+            panel1.HorizontalScroll.Enabled = false;
+            panel1.HorizontalScroll.Visible = false;
+            panel1.HorizontalScroll.Maximum = 0;
+            panel1.AutoScroll = true;
         }
     }
 }
