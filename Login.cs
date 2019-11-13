@@ -21,7 +21,7 @@ namespace BAMS
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            tbPassword._TextBox.PasswordChar = '*';
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -53,9 +53,21 @@ namespace BAMS
 
         private void button_WOC1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-M9RBD6L\\SSQL;Initial Catalog=BAM_db;Integrated Security=True;Connect Timeout=30;Encrypt=False;" +
-                "TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            
+            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-M9RBD6L\SSQL;Initial Catalog=BAM_db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            string query = "select * from tblClient where ID ='"+tbUser.text.Trim()+"' and Password = '"+tbPassword.text.Trim()+"'";
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            DataTable dtbl = new DataTable();
+            sda.Fill(dtbl);
+            if(dtbl.Rows.Count ==1 )
+            {
+                Form1 f1 = new Form1();
+                this.Hide();
+                f1.Show();
+            }
+            else
+            {
+                MessageBox.Show("check your id and password");
+            }
         }
 
         private void button_WOC2_Click(object sender, EventArgs e)
@@ -76,6 +88,16 @@ namespace BAMS
         private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbPassword_OnTextChange(object sender, EventArgs e)
+        {
+            
         }
     }
 }

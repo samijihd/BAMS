@@ -27,6 +27,8 @@ namespace BAMS
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btnDashboard);
+            hidepanels();
+            flowLayoutPanel1.Visible = true;
         }
 
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
@@ -38,7 +40,10 @@ namespace BAMS
         {
 
         }
-
+        private void hidepanels()
+        {
+            flowLayoutPanel1.Visible = false;
+        }
         private void MoveSidePanel(Control c)
         {
             sidePanel.Height = c.Height;
@@ -48,6 +53,9 @@ namespace BAMS
         private void btn2_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn2);
+            hidepanels();
+            
+          
         }
 
         private void btn3_Click(object sender, EventArgs e)
@@ -80,6 +88,16 @@ namespace BAMS
             this.Hide();
             Login l = new Login();
             l.Show();
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void bunifuImageButton2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
