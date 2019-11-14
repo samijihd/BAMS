@@ -26,9 +26,14 @@ namespace BAMS
             MoveSidePanel(btnDashboard);
             
             label2.Text = Login.user;
-            
+            hidepanels();
             
 
+        }
+        private void hidepanels()
+        {
+            panel10.Visible = false;
+            panel1.Visible = false;
         }
         private void bunifuMetroTextbox3_OnValueChanged(object sender, EventArgs e)
         {
@@ -75,10 +80,7 @@ namespace BAMS
         {
 
         }
-        private void hidepanels()
-        {
-            //flowLayoutPanel1.Visible = false;
-        }
+        
         private void MoveSidePanel(Control c)
         {
             sidePanel.Height = c.Height;
@@ -89,32 +91,38 @@ namespace BAMS
         {
             MoveSidePanel(btn2);
             hidepanels();
-            
+            panel1.Visible = true;
         }
 
         private void btn3_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn3);
+            hidepanels();
+            panel10.Visible = true;
         }
 
         private void btn4_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn4);
+            hidepanels();
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn5);
+            hidepanels();
         }
 
         private void btn6_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn6);
+            hidepanels();
         }
 
         private void btn7_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn7);
+            hidepanels();
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -222,6 +230,11 @@ namespace BAMS
         }
 
         private void bunifuMetroTextbox6_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton28_Click(object sender, EventArgs e)
         {
 
         }
