@@ -210,5 +210,20 @@ namespace BAMS
         {
             panel1.AutoScrollPosition = new Point(0, 1100);
         }
+
+        private void bunifuThinButton26_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton27_Click(object sender, EventArgs e)
+        {
+            panel1.AutoScrollPosition = new Point(0, 1100);
+        }
+
+        private void bunifuMetroTextbox6_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
