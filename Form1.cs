@@ -24,11 +24,41 @@ namespace BAMS
             MoveSidePanel(btn6);
             MoveSidePanel(btn7);
             MoveSidePanel(btnDashboard);
-
+            
             label2.Text = Login.user;
+            
+            
 
         }
+        private void bunifuMetroTextbox3_OnValueChanged(object sender, EventArgs e)
+        {
+            panel1.AutoScrollPosition = new Point(0, 650);
+        }
+        private void bunifuMetroTextbox2_OnValueChanged(object sender, EventArgs e)
+        {
+            panel1.AutoScrollPosition = new Point(0, 650);
+        }
+        private void bunifuMetroTextbox1_OnValueChanged(object sender, EventArgs e)
+        {
+            panel1.AutoScrollPosition = new Point(0, 650);
+        }
+        private void bunifuMetroTextbox4_OnValueChanged(object sender, EventArgs e)
+        {
+            panel1.AutoScrollPosition = new Point(0, 650);
+        }
+        private void bunifuMetroTextbox5_OnValueChanged(object sender, EventArgs e)
+        {
+            panel1.AutoScrollPosition = new Point(0, 650);
+        }
 
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            panel1.AutoScrollPosition = new Point(0, 650);
+        }
+        private void bunifuDatepicker1_onValueChanged(object sender, EventArgs e)
+        {
+            panel1.AutoScrollPosition = new Point(0, 650);
+        }
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btnDashboard);
@@ -60,7 +90,6 @@ namespace BAMS
             MoveSidePanel(btn2);
             hidepanels();
             
-          
         }
 
         private void btn3_Click(object sender, EventArgs e)
@@ -87,13 +116,6 @@ namespace BAMS
         {
             MoveSidePanel(btn7);
         }
-
-        /*private void button_WOC2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Login l = new Login();
-            l.Show();
-        }*/
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
@@ -122,7 +144,7 @@ namespace BAMS
 
         private void bunifuThinButton24_Click(object sender, EventArgs e)
         {
-
+            panel1.AutoScrollPosition = new Point(0, 1100);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -130,15 +152,63 @@ namespace BAMS
 
         }
 
-        private void bunifuMetroTextbox1_OnValueChanged(object sender, EventArgs e)
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
             
         }
-
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        private void bunifuImageButton3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void nColorButton1_ColorChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuCustomLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuDropdown2_onItemSelected(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuCustomLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton23_Click(object sender, EventArgs e)
+        {
+            panel1.AutoScrollPosition = new Point(0, 1100);
         }
     }
 }
