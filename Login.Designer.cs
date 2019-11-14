@@ -39,10 +39,11 @@
             this.bunifuCustomLabel1 = new ns1.BunifuCustomLabel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnExit = new ePOSOne.btnProduct.Button_WOC();
             this.tbUser = new ns1.BunifuTextbox();
             this.tbPassword = new ns1.BunifuTextbox();
+            this.btnExit = new ePOSOne.btnProduct.Button_WOC();
             this.btnLogin = new ePOSOne.btnProduct.Button_WOC();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -135,6 +136,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.btnExit);
             this.panel2.Controls.Add(this.tbUser);
             this.panel2.Controls.Add(this.tbPassword);
@@ -146,26 +148,6 @@
             this.panel2.Size = new System.Drawing.Size(546, 558);
             this.panel2.TabIndex = 8;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // btnExit
-            // 
-            this.btnExit.BorderColor = System.Drawing.Color.Red;
-            this.btnExit.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnExit.Location = new System.Drawing.Point(193, 419);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.OnHoverBorderColor = System.Drawing.Color.Silver;
-            this.btnExit.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.btnExit.OnHoverTextColor = System.Drawing.Color.Silver;
-            this.btnExit.Size = new System.Drawing.Size(164, 52);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.Text = "EXIT";
-            this.btnExit.TextColor = System.Drawing.Color.Red;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.button_WOC2_Click);
             // 
             // tbUser
             // 
@@ -196,6 +178,26 @@
             this.tbPassword.text = "";
             this.tbPassword.OnTextChange += new System.EventHandler(this.tbPassword_OnTextChange);
             // 
+            // btnExit
+            // 
+            this.btnExit.BorderColor = System.Drawing.Color.Red;
+            this.btnExit.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnExit.Location = new System.Drawing.Point(193, 419);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.OnHoverBorderColor = System.Drawing.Color.Silver;
+            this.btnExit.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.btnExit.OnHoverTextColor = System.Drawing.Color.Silver;
+            this.btnExit.Size = new System.Drawing.Size(164, 52);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "EXIT";
+            this.btnExit.TextColor = System.Drawing.Color.Red;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.button_WOC2_Click);
+            // 
             // btnLogin
             // 
             this.btnLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -215,6 +217,18 @@
             this.btnLogin.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.button_WOC1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Corbel", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(207, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(128, 46);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Admin";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Login
             // 
@@ -237,6 +251,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -255,6 +270,7 @@
         private ePOSOne.btnProduct.Button_WOC btnExit;
         private ns1.BunifuImageButton bunifuImageButton1;
         private ns1.BunifuImageButton bunifuImageButton2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

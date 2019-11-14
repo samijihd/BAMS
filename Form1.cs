@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace BAMS
 {
@@ -23,7 +24,9 @@ namespace BAMS
             MoveSidePanel(btn6);
             MoveSidePanel(btn7);
             MoveSidePanel(btnDashboard);
+
             label2.Text = Login.user;
+
         }
 
         private void bunifuThinButton21_Click(object sender, EventArgs e)
@@ -85,12 +88,12 @@ namespace BAMS
             MoveSidePanel(btn7);
         }
 
-        private void button_WOC2_Click(object sender, EventArgs e)
+        /*private void button_WOC2_Click(object sender, EventArgs e)
         {
             this.Hide();
             Login l = new Login();
             l.Show();
-        }
+        }*/
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
@@ -114,11 +117,28 @@ namespace BAMS
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            panel1.AutoScroll = false;
-            panel1.HorizontalScroll.Enabled = false;
-            panel1.HorizontalScroll.Visible = false;
-            panel1.HorizontalScroll.Maximum = 0;
-            panel1.AutoScroll = true;
+            
+        }
+
+        private void bunifuThinButton24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuMetroTextbox1_OnValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
