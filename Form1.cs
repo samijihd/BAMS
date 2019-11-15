@@ -105,6 +105,9 @@ namespace BAMS
         {
             MoveSidePanel(btn4);
             hidepanels();
+            Card cd = new Card();
+            cd.Show();
+            this.Hide();
         }
 
         private void btn5_Click(object sender, EventArgs e)
@@ -235,6 +238,11 @@ namespace BAMS
         }
 
         private void bunifuThinButton28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
         {
 
         }
