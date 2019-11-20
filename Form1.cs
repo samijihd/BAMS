@@ -246,5 +246,40 @@ namespace BAMS
         {
 
         }
+
+        private void bunifuMetroTextbox10_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuMetroTextbox9_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuMetroTextbox8_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
