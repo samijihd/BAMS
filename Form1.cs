@@ -281,5 +281,35 @@ namespace BAMS
         {
 
         }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton29_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton213_Click(object sender, EventArgs e)
+        {
+            panel10.AutoScrollPosition = new Point(0,1483);
+        }
+
+        private void bunifuThinButton211_Click(object sender, EventArgs e)
+        {
+            panel10.AutoScrollPosition = new Point(0,193);
+        }
+
+        private void bunifuThinButton212_Click(object sender, EventArgs e)
+        {
+            panel10.AutoScrollPosition = new Point(0,801);
+        }
     }
 }
