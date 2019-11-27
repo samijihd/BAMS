@@ -10,27 +10,27 @@ using System.Windows.Forms;
 
 namespace BAMS
 {
-    public partial class Card : Form
+    public partial class Cards : Form
     {
-        public Card()
+        public Cards()
         {
             InitializeComponent();
         }
 
-        private void test_Load(object sender, EventArgs e)
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void bunifuThinButton23_Click(object sender, EventArgs e)
         {
-            addCard acd = new addCard();
-            acd.Show();
+            addCard ac = new addCard();
+            ac.Show();
         }
     }
 }

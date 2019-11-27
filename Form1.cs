@@ -22,7 +22,6 @@ namespace BAMS
             MoveSidePanel(btn4);
             MoveSidePanel(btn5);
             MoveSidePanel(btn6);
-            MoveSidePanel(btn7);
             MoveSidePanel(btnDashboard);
             
             label2.Text = Login.user;
@@ -105,28 +104,27 @@ namespace BAMS
         {
             MoveSidePanel(btn4);
             hidepanels();
-            Card cd = new Card();
+            Cards cd = new Cards();
             cd.Show();
-            this.Hide();
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn5);
             hidepanels();
+            Account a = new Account();
+            a.Show();
         }
 
         private void btn6_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn6);
             hidepanels();
+            Employee emp = new Employee();
+            emp.Show();
         }
 
-        private void btn7_Click(object sender, EventArgs e)
-        {
-            MoveSidePanel(btn7);
-            hidepanels();
-        }
+       
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
@@ -299,17 +297,24 @@ namespace BAMS
 
         private void bunifuThinButton213_Click(object sender, EventArgs e)
         {
-            panel10.AutoScrollPosition = new Point(0,1483);
+            Deposit d = new Deposit();
+            d.Show();
         }
 
         private void bunifuThinButton211_Click(object sender, EventArgs e)
         {
-            panel10.AutoScrollPosition = new Point(0,193);
+            panel10.AutoScrollPosition = new Point(0,190);
         }
 
         private void bunifuThinButton212_Click(object sender, EventArgs e)
         {
             panel10.AutoScrollPosition = new Point(0,801);
+        }
+
+        private void bunifuThinButton214_Click(object sender, EventArgs e)
+        {
+            Transfer t = new Transfer();
+            t.Show();
         }
     }
 }
