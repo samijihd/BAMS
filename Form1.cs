@@ -33,6 +33,7 @@ namespace BAMS
         {
             panel10.Visible = false;
             panel1.Visible = false;
+            panel6.Visible = false;
         }
         private void bunifuMetroTextbox3_OnValueChanged(object sender, EventArgs e)
         {
@@ -67,7 +68,8 @@ namespace BAMS
         {
             MoveSidePanel(btnDashboard);
             hidepanels();
-            //flowLayoutPanel1.Visible = true;
+           // panel10.Visible = true;
+            panel6.Visible = true;
         }
 
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
@@ -315,6 +317,16 @@ namespace BAMS
         {
             Transfer t = new Transfer();
             t.Show();
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint_1(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace BAMS
 {
-    public partial class Employee : Form
+    public partial class addEmployee : Form
     {
-        public Employee()
+        public addEmployee()
         {
             InitializeComponent();
+        }
+
+        private void addEmployee_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -25,12 +30,6 @@ namespace BAMS
         private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void bunifuThinButton23_Click(object sender, EventArgs e)
-        {
-            addEmployee de = new addEmployee();
-            de.Show();
         }
     }
 }
