@@ -13,4 +13,4 @@ Employee sayfasında çalışanların ve yönetmenlerin bilgilerinin üzerinde f
 Verileri kaydetmek için SQL server platformu kullanılacak,
 ve kullanıcı arayüzü için c# ve vs.NET platformları kullanılacak
 
-Sami KWHAIREH
+written by: Sami KWHAIREH
