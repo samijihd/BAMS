@@ -7,14 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace BAMS
 {
     public partial class Account : Form
     {
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-M9RBD6L\SSQL;Initial Catalog=BAM_db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SqlCommand cmd;
+        SqlDataAdapter adpt;
+        DataTable dt;
+        string query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id";
         public Account()
         {
             InitializeComponent();
+            showAccount();
+        }
+
+        public void showAccount()
+        {
+            try
+            {
+                con.Open();
+                adpt = new SqlDataAdapter(query, con);
+                dt = new DataTable();
+                adpt.Fill(dt);
+                dataGridView1.DataSource = dt;
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error");
+            }
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -31,6 +58,98 @@ namespace BAMS
         {
             addAccount adc = new addAccount();
             adc.Show();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Account_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton24_Click(object sender, EventArgs e)
+        {
+            query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id";
+            showAccount();
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            query = "select * from tblAccount where ID_ like '"+tbsearch.Text+"%' or AccountNo like '"+tbsearch.Text+"%' or Iban like '"+tbsearch.Text+"%' ";
+            showAccount();
+        }
+
+        private void bunifuThinButton22_Click(object sender, EventArgs e)
+        {
+            if (usdradio.Checked)
+            {
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where CurrencyType = 'USD'";
+                showAccount();
+            }
+            else if (eurradio.Checked)
+            {
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where CurrencyType = 'EUR'";
+                showAccount();
+            }
+            else if (gbpradio.Checked)
+            {
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where CurrencyType = 'GBP'";
+                showAccount();
+            }
+            else if (chpradio.Checked)
+            {
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where CurrencyType = 'CHP'";
+                showAccount();
+            }
+            else
+            {
+                MessageBox.Show("please select the correct item");
+            }
+        }
+
+        private void bunifuThinButton25_Click(object sender, EventArgs e)
+        {
+            string from = tbfrom.Text.Trim();
+            string to = tbto.Text.Trim();
+            query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where Balance between "+from+" and "+to+"";
+            showAccount(); 
+        }
+
+        private void bunifuThinButton21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addCurrency curr = new addCurrency();
+            curr.Show();
         }
     }
 }

@@ -38,16 +38,16 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bunifuThinButton21 = new ns1.BunifuThinButton2();
-            this.bunifuMetroTextbox18 = new ns1.BunifuMetroTextbox();
             this.label33 = new System.Windows.Forms.Label();
             this.bunifuThinButton215 = new ns1.BunifuThinButton2();
-            this.bunifuMetroTextbox17 = new ns1.BunifuMetroTextbox();
             this.label32 = new System.Windows.Forms.Label();
-            this.bunifuMetroTextbox16 = new ns1.BunifuMetroTextbox();
             this.label30 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
             this.bunifuDragControl1 = new ns1.BunifuDragControl(this.components);
+            this.tblname = new ns1.BunifuMaterialTextbox();
+            this.tbaccountno = new ns1.BunifuMaterialTextbox();
+            this.tbamount = new ns1.BunifuMaterialTextbox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -71,7 +71,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1165, 101);
+            this.panel1.Size = new System.Drawing.Size(657, 101);
             this.panel1.TabIndex = 9;
             // 
             // bunifuImageButton2
@@ -83,7 +83,7 @@
             this.bunifuImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton2.Image")));
             this.bunifuImageButton2.ImageActive = null;
             this.bunifuImageButton2.InitialImage = null;
-            this.bunifuImageButton2.Location = new System.Drawing.Point(1081, 11);
+            this.bunifuImageButton2.Location = new System.Drawing.Point(569, 12);
             this.bunifuImageButton2.Name = "bunifuImageButton2";
             this.bunifuImageButton2.Size = new System.Drawing.Size(33, 31);
             this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -101,9 +101,9 @@
             this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
             this.bunifuImageButton1.ImageActive = null;
             this.bunifuImageButton1.InitialImage = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(1120, 11);
+            this.bunifuImageButton1.Location = new System.Drawing.Point(608, 12);
             this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(33, 31);
+            this.bunifuImageButton1.Size = new System.Drawing.Size(37, 31);
             this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButton1.TabIndex = 7;
             this.bunifuImageButton1.TabStop = false;
@@ -134,20 +134,21 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+            this.panel2.Controls.Add(this.tbamount);
+            this.panel2.Controls.Add(this.tbaccountno);
+            this.panel2.Controls.Add(this.tblname);
             this.panel2.Controls.Add(this.bunifuThinButton21);
-            this.panel2.Controls.Add(this.bunifuMetroTextbox18);
             this.panel2.Controls.Add(this.label33);
             this.panel2.Controls.Add(this.bunifuThinButton215);
-            this.panel2.Controls.Add(this.bunifuMetroTextbox17);
             this.panel2.Controls.Add(this.label32);
-            this.panel2.Controls.Add(this.bunifuMetroTextbox16);
             this.panel2.Controls.Add(this.label30);
             this.panel2.Controls.Add(this.panel16);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 101);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1165, 620);
+            this.panel2.Size = new System.Drawing.Size(657, 620);
             this.panel2.TabIndex = 10;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // bunifuThinButton21
             // 
@@ -167,7 +168,7 @@
             this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.White;
             this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuThinButton21.Location = new System.Drawing.Point(458, 475);
+            this.bunifuThinButton21.Location = new System.Drawing.Point(152, 460);
             this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton21.Name = "bunifuThinButton21";
             this.bunifuThinButton21.Size = new System.Drawing.Size(145, 55);
@@ -175,29 +176,12 @@
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
             // 
-            // bunifuMetroTextbox18
-            // 
-            this.bunifuMetroTextbox18.BorderColorFocused = System.Drawing.Color.White;
-            this.bunifuMetroTextbox18.BorderColorIdle = System.Drawing.Color.Gainsboro;
-            this.bunifuMetroTextbox18.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
-            this.bunifuMetroTextbox18.BorderThickness = 3;
-            this.bunifuMetroTextbox18.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextbox18.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextbox18.ForeColor = System.Drawing.Color.White;
-            this.bunifuMetroTextbox18.isPassword = false;
-            this.bunifuMetroTextbox18.Location = new System.Drawing.Point(537, 278);
-            this.bunifuMetroTextbox18.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.bunifuMetroTextbox18.Name = "bunifuMetroTextbox18";
-            this.bunifuMetroTextbox18.Size = new System.Drawing.Size(266, 45);
-            this.bunifuMetroTextbox18.TabIndex = 72;
-            this.bunifuMetroTextbox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Corbel", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.Color.White;
-            this.label33.Location = new System.Drawing.Point(332, 294);
+            this.label33.Location = new System.Drawing.Point(71, 279);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(194, 29);
             this.label33.TabIndex = 71;
@@ -221,64 +205,31 @@
             this.bunifuThinButton215.IdleFillColor = System.Drawing.Color.White;
             this.bunifuThinButton215.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton215.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuThinButton215.Location = new System.Drawing.Point(658, 475);
+            this.bunifuThinButton215.Location = new System.Drawing.Point(352, 460);
             this.bunifuThinButton215.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton215.Name = "bunifuThinButton215";
             this.bunifuThinButton215.Size = new System.Drawing.Size(145, 55);
             this.bunifuThinButton215.TabIndex = 70;
             this.bunifuThinButton215.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // bunifuMetroTextbox17
-            // 
-            this.bunifuMetroTextbox17.BorderColorFocused = System.Drawing.Color.White;
-            this.bunifuMetroTextbox17.BorderColorIdle = System.Drawing.Color.Gainsboro;
-            this.bunifuMetroTextbox17.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
-            this.bunifuMetroTextbox17.BorderThickness = 3;
-            this.bunifuMetroTextbox17.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextbox17.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextbox17.ForeColor = System.Drawing.Color.White;
-            this.bunifuMetroTextbox17.isPassword = false;
-            this.bunifuMetroTextbox17.Location = new System.Drawing.Point(537, 366);
-            this.bunifuMetroTextbox17.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.bunifuMetroTextbox17.Name = "bunifuMetroTextbox17";
-            this.bunifuMetroTextbox17.Size = new System.Drawing.Size(266, 45);
-            this.bunifuMetroTextbox17.TabIndex = 69;
-            this.bunifuMetroTextbox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuThinButton215.Click += new System.EventHandler(this.bunifuThinButton215_Click);
             // 
             // label32
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Corbel", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.ForeColor = System.Drawing.Color.White;
-            this.label32.Location = new System.Drawing.Point(312, 380);
+            this.label32.Location = new System.Drawing.Point(51, 365);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(214, 29);
             this.label32.TabIndex = 68;
             this.label32.Text = "Amount to Deposit :";
-            // 
-            // bunifuMetroTextbox16
-            // 
-            this.bunifuMetroTextbox16.BorderColorFocused = System.Drawing.Color.White;
-            this.bunifuMetroTextbox16.BorderColorIdle = System.Drawing.Color.Gainsboro;
-            this.bunifuMetroTextbox16.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
-            this.bunifuMetroTextbox16.BorderThickness = 3;
-            this.bunifuMetroTextbox16.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextbox16.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextbox16.ForeColor = System.Drawing.Color.White;
-            this.bunifuMetroTextbox16.isPassword = false;
-            this.bunifuMetroTextbox16.Location = new System.Drawing.Point(537, 192);
-            this.bunifuMetroTextbox16.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.bunifuMetroTextbox16.Name = "bunifuMetroTextbox16";
-            this.bunifuMetroTextbox16.Size = new System.Drawing.Size(266, 45);
-            this.bunifuMetroTextbox16.TabIndex = 67;
-            this.bunifuMetroTextbox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label30
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Corbel", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.White;
-            this.label30.Location = new System.Drawing.Point(335, 201);
+            this.label30.Location = new System.Drawing.Point(74, 186);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(197, 29);
             this.label30.TabIndex = 66;
@@ -291,7 +242,7 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel16.Location = new System.Drawing.Point(0, 0);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1165, 95);
+            this.panel16.Size = new System.Drawing.Size(657, 95);
             this.panel16.TabIndex = 65;
             // 
             // label31
@@ -312,11 +263,71 @@
             this.bunifuDragControl1.TargetControl = this.panel1;
             this.bunifuDragControl1.Vertical = true;
             // 
+            // tblname
+            // 
+            this.tblname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
+            this.tblname.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.tblname.ForeColor = System.Drawing.Color.White;
+            this.tblname.HintForeColor = System.Drawing.Color.Empty;
+            this.tblname.HintText = "";
+            this.tblname.isPassword = false;
+            this.tblname.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.tblname.LineIdleColor = System.Drawing.Color.White;
+            this.tblname.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.tblname.LineThickness = 3;
+            this.tblname.Location = new System.Drawing.Point(278, 171);
+            this.tblname.Margin = new System.Windows.Forms.Padding(4);
+            this.tblname.Name = "tblname";
+            this.tblname.Size = new System.Drawing.Size(266, 44);
+            this.tblname.TabIndex = 74;
+            this.tblname.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // tbaccountno
+            // 
+            this.tbaccountno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
+            this.tbaccountno.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbaccountno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.tbaccountno.ForeColor = System.Drawing.Color.White;
+            this.tbaccountno.HintForeColor = System.Drawing.Color.Empty;
+            this.tbaccountno.HintText = "";
+            this.tbaccountno.isPassword = false;
+            this.tbaccountno.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.tbaccountno.LineIdleColor = System.Drawing.Color.White;
+            this.tbaccountno.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.tbaccountno.LineThickness = 3;
+            this.tbaccountno.Location = new System.Drawing.Point(278, 264);
+            this.tbaccountno.Margin = new System.Windows.Forms.Padding(4);
+            this.tbaccountno.Name = "tbaccountno";
+            this.tbaccountno.Size = new System.Drawing.Size(266, 44);
+            this.tbaccountno.TabIndex = 74;
+            this.tbaccountno.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // tbamount
+            // 
+            this.tbamount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
+            this.tbamount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.tbamount.ForeColor = System.Drawing.Color.White;
+            this.tbamount.HintForeColor = System.Drawing.Color.Empty;
+            this.tbamount.HintText = "";
+            this.tbamount.isPassword = false;
+            this.tbamount.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.tbamount.LineIdleColor = System.Drawing.Color.White;
+            this.tbamount.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.tbamount.LineThickness = 3;
+            this.tbamount.Location = new System.Drawing.Point(278, 350);
+            this.tbamount.Margin = new System.Windows.Forms.Padding(4);
+            this.tbamount.Name = "tbamount";
+            this.tbamount.Size = new System.Drawing.Size(266, 44);
+            this.tbamount.TabIndex = 74;
+            this.tbamount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
             // Deposit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 721);
+            this.ClientSize = new System.Drawing.Size(657, 721);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -345,15 +356,15 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
         private ns1.BunifuDragControl bunifuDragControl1;
-        private ns1.BunifuMetroTextbox bunifuMetroTextbox18;
         private System.Windows.Forms.Label label33;
         private ns1.BunifuThinButton2 bunifuThinButton215;
-        private ns1.BunifuMetroTextbox bunifuMetroTextbox17;
         private System.Windows.Forms.Label label32;
-        private ns1.BunifuMetroTextbox bunifuMetroTextbox16;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label31;
         private ns1.BunifuThinButton2 bunifuThinButton21;
+        private ns1.BunifuMaterialTextbox tbamount;
+        private ns1.BunifuMaterialTextbox tbaccountno;
+        private ns1.BunifuMaterialTextbox tblname;
     }
 }

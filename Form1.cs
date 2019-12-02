@@ -8,12 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Bunifu;
+using BunifuAnimatorNS;
+
 
 namespace BAMS
 {
     public partial class Form1 : Form
     {
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-M9RBD6L\SSQL;Initial Catalog=BAM_db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SqlCommand cmd;
+        SqlDataAdapter adpt;
+        DataTable dt;
+        DataSet ds = new DataSet();
+        public string query;
         
+
         public Form1()
         {
             InitializeComponent();
@@ -327,6 +337,121 @@ namespace BAMS
         private void panel6_Paint_1(object sender, PaintEventArgs e)
         {
 
+        }
+        private void clearControls()
+        {
+            foreach (TextBox tb in this.Controls.OfType<TextBox>())
+            {
+                tb.Text = string.Empty;
+            }
+        }
+
+        private void bunifuThinButton26_Click_1(object sender, EventArgs e)
+        {
+            clearControls();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton25_Click_1(object sender, EventArgs e)
+        {
+            newClient nc1 = new newClient();
+            nc1.Show();
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        public void showdata()
+        {
+            try
+            {
+                con.Open();
+                //cmd = new SqlCommand();
+                adpt = new SqlDataAdapter(query, con);
+                dt = new DataTable();
+                adpt.Fill(dt);
+                gridview.DataSource = dt;
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("failed to show data make sure that you are connected to the server, please try again !");
+            }
+        }
+        private void bunifuThinButton21_Click_1(object sender, EventArgs e)
+        {
+            query = "select * from tblCustomer";
+            showdata();
+        }
+
+        private void bunifuThinButton22_Click(object sender, EventArgs e)
+        {
+            query = "select * from tblCustomer";
+            showdata();
+        }
+
+        private void bunifuThinButton24_Click_1(object sender, EventArgs e)
+        {
+            if (maleradio.Checked)
+            {
+                query = "select * from tblCustomer where Gender='male'";
+                showdata();
+            }
+            else if (femaleradio.Checked)
+            {
+                query = "select * from tblCustomer where Gender='female'";
+                showdata();
+            }
+            else if (otherradio.Checked)
+            {
+                query = "select * from tblCustomer where Gender='other'";
+                showdata();
+            }
+            else
+            {
+                MessageBox.Show("please select type");
+            }
+            
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            query = "select * from tblCustomer where firstname like '"+tbsearch.Text+"%' or ID like '"+tbsearch.Text+"%' ";
+            showdata();
+        }
+
+     
+        private void bunifuThinButton27_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void bunifuThinButton210_Click(object sender, EventArgs e)
+        {
+            panel10.AutoScrollPosition = new Point(0, 190);
+        }
+
+        private void bunifuThinButton28_Click_1(object sender, EventArgs e)
+        {
+            Deposit d = new Deposit();
+            d.Show();
+        }
+
+        private void bunifuThinButton26_Click_2(object sender, EventArgs e)
+        {
+            Transfer t = new Transfer();
+            t.Show();
         }
     }
 }

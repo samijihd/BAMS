@@ -55,6 +55,7 @@ namespace BAMS
 
         private void button_WOC1_Click(object sender, EventArgs e)
         {
+
             user = tbUser.text.Trim();
             password = tbPassword.text.Trim();
             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-M9RBD6L\SSQL;Initial Catalog=BAM_db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -62,7 +63,7 @@ namespace BAMS
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);
-            if(dtbl.Rows.Count ==1 )
+            if(dtbl.Rows.Count > 0 )
             {
                 Form1 f1 = new Form1();
                 this.Hide();

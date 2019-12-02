@@ -42,14 +42,10 @@
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>..\..\BAMS\bin\Debug\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
-    <Reference Include="Nevron.Chart, Version=19.11.7.12, Culture=neutral, PublicKeyToken=2961c51bb98125d2" />
-    <Reference Include="Nevron.Chart.WinForm, Version=19.11.7.12, Culture=neutral, PublicKeyToken=c9bd8998e981e4ee" />
-    <Reference Include="Nevron.GraphicsGL, Version=19.11.7.12, Culture=neutral, PublicKeyToken=2f17c6a71f852d32" />
-    <Reference Include="Nevron.Presentation, Version=19.11.7.12, Culture=neutral, PublicKeyToken=6656c5d1103e75cc" />
-    <Reference Include="Nevron.System, Version=19.11.7.12, Culture=neutral, PublicKeyToken=6a987feae5e496fd" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
@@ -83,6 +79,12 @@
     </Compile>
     <Compile Include="addCard.Designer.cs">
       <DependentUpon>addCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addCurrency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addCurrency.Designer.cs">
+      <DependentUpon>addCurrency.cs</DependentUpon>
     </Compile>
     <Compile Include="addEmployee.cs">
       <SubType>Form</SubType>
@@ -123,8 +125,15 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="newClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newClient.Designer.cs">
+      <DependentUpon>newClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerConnection.cs" />
     <Compile Include="Transfer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="addCard.resx">
       <DependentUpon>addCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addCurrency.resx">
+      <DependentUpon>addCurrency.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="addEmployee.resx">
       <DependentUpon>addEmployee.cs</DependentUpon>
@@ -157,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newClient.resx">
+      <DependentUpon>newClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
