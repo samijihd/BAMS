@@ -86,11 +86,11 @@
     <Compile Include="addCurrency.Designer.cs">
       <DependentUpon>addCurrency.cs</DependentUpon>
     </Compile>
-    <Compile Include="addEmployee.cs">
+    <Compile Include="addJobTitle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="addEmployee.Designer.cs">
-      <DependentUpon>addEmployee.cs</DependentUpon>
+    <Compile Include="addJobTitle.Designer.cs">
+      <DependentUpon>addJobTitle.cs</DependentUpon>
     </Compile>
     <Compile Include="Button_Woc.cs">
       <SubType>Component</SubType>
@@ -106,12 +106,6 @@
     </Compile>
     <Compile Include="Deposit.Designer.cs">
       <DependentUpon>Deposit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Employee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Employee.Designer.cs">
-      <DependentUpon>Employee.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -130,6 +124,12 @@
     </Compile>
     <Compile Include="newClient.Designer.cs">
       <DependentUpon>newClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newEmployee.Designer.cs">
+      <DependentUpon>newEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,17 +152,14 @@
     <EmbeddedResource Include="addCurrency.resx">
       <DependentUpon>addCurrency.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="addEmployee.resx">
-      <DependentUpon>addEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="addJobTitle.resx">
+      <DependentUpon>addJobTitle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cards.resx">
       <DependentUpon>Cards.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Deposit.resx">
       <DependentUpon>Deposit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Employee.resx">
-      <DependentUpon>Employee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -172,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="newClient.resx">
       <DependentUpon>newClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newEmployee.resx">
+      <DependentUpon>newEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -46,6 +46,8 @@ namespace BAMS
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
+            Form1 f1 = new Form1();
+            f1.Show();
             this.Close();
         }
 
@@ -67,7 +69,7 @@ namespace BAMS
 
         private void Account_Load(object sender, EventArgs e)
         {
-
+                
         }
 
         private void bunifuThinButton24_Click(object sender, EventArgs e)
@@ -76,6 +78,7 @@ namespace BAMS
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id";
+
             showAccount();
         }
 

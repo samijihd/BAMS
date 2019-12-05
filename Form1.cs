@@ -22,6 +22,13 @@ namespace BAMS
         DataTable dt;
         DataSet ds = new DataSet();
         public string query;
+        string queryEmployee = " select ID_,Firstname,Lastname,Username,JobTitle,Activity,Salary,Email" +
+                               " from tblEmployee" +
+                               " INNER JOIN tblJobTitle" +
+                               " ON tblEmployee.Job_ID = tblJobTitle.id";
+        public int balanc;
+        public string Employee_ID ;
+        
         
 
         public Form1()
@@ -37,49 +44,48 @@ namespace BAMS
             label2.Text = Login.user;
             hidepanels();
             
-
         }
         private void hidepanels()
         {
             panel10.Visible = false;
-            panel1.Visible = false;
+            panel3.Visible = false;
             panel6.Visible = false;
         }
         private void bunifuMetroTextbox3_OnValueChanged(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 650);
+            //panel1.AutoScrollPosition = new Point(0, 650);
         }
         private void bunifuMetroTextbox2_OnValueChanged(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 650);
+//panel1.AutoScrollPosition = new Point(0, 650);
         }
         private void bunifuMetroTextbox1_OnValueChanged(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 650);
+           // panel1.AutoScrollPosition = new Point(0, 650);
         }
         private void bunifuMetroTextbox4_OnValueChanged(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 650);
+           // panel1.AutoScrollPosition = new Point(0, 650);
         }
         private void bunifuMetroTextbox5_OnValueChanged(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 650);
+           // panel1.AutoScrollPosition = new Point(0, 650);
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 650);
+           // panel1.AutoScrollPosition = new Point(0, 650);
         }
         private void bunifuDatepicker1_onValueChanged(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 650);
+           // panel1.AutoScrollPosition = new Point(0, 650);
         }
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btnDashboard);
             hidepanels();
            // panel10.Visible = true;
-            panel6.Visible = true;
+           // panel6.Visible = true;
         }
 
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
@@ -102,7 +108,7 @@ namespace BAMS
         {
             MoveSidePanel(btn2);
             hidepanels();
-            panel1.Visible = true;
+            panel3.Visible = true;
         }
 
         private void btn3_Click(object sender, EventArgs e)
@@ -125,15 +131,32 @@ namespace BAMS
             MoveSidePanel(btn5);
             hidepanels();
             Account a = new Account();
+            this.Hide();
             a.Show();
         }
-
+        public void BindData()
+        {
+            con.Open();
+            query = "select id,JobTitle from tblJobTitle";
+            cmd = new SqlCommand(query, con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("id", typeof(string));
+            dt.Columns.Add("JobTitle", typeof(string));
+            dt.Load(reader);
+            comboBox1.ValueMember = "id";
+            comboBox1.DisplayMember = "JobTitle";
+            comboBox1.DataSource = dt;
+            con.Close();
+        }
         private void btn6_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn6);
             hidepanels();
-            Employee emp = new Employee();
-            emp.Show();
+            panel6.Visible = true;
+            BindData();
+            DisplayEmployee();
         }
 
        
@@ -165,7 +188,7 @@ namespace BAMS
 
         private void bunifuThinButton24_Click(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 1100);
+            //panel1.AutoScrollPosition = new Point(0, 1100);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -183,11 +206,6 @@ namespace BAMS
         }
 
         private void nColorButton1_ColorChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
         {
 
         }
@@ -229,7 +247,7 @@ namespace BAMS
 
         private void bunifuThinButton23_Click(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 1100);
+           // panel1.AutoScrollPosition = new Point(0, 1100);
         }
 
         private void bunifuThinButton26_Click(object sender, EventArgs e)
@@ -239,7 +257,7 @@ namespace BAMS
 
         private void bunifuThinButton27_Click(object sender, EventArgs e)
         {
-            panel1.AutoScrollPosition = new Point(0, 1100);
+            //panel1.AutoScrollPosition = new Point(0, 1100);
         }
 
         private void bunifuMetroTextbox6_OnValueChanged(object sender, EventArgs e)
@@ -302,9 +320,31 @@ namespace BAMS
 
         }
 
+        public void checkBalance()
+        {
+            SqlDataReader reader = null;
+            cmd = new SqlCommand();
+
+            cmd.CommandText = "getBalance";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@accountno", SqlDbType.VarChar).Value = tbsaccountno.Text;
+            cmd.Parameters.Add("@iban", SqlDbType.VarChar).Value = tbsiban.Text;
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                balanc = Convert.ToInt32(reader);
+                con.Close();
+            }
+        }
+
         private void bunifuThinButton29_Click(object sender, EventArgs e)
         {
-
+            //submit
+            checkBalance();
         }
 
         private void bunifuThinButton213_Click(object sender, EventArgs e)
@@ -452,6 +492,199 @@ namespace BAMS
         {
             Transfer t = new Transfer();
             t.Show();
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+        public void DisplayEmployee()
+        {
+             try
+            { 
+              con.Open();
+              adpt = new SqlDataAdapter(queryEmployee, con);
+              dt = new DataTable();
+              adpt.Fill(dt);
+              datagridEmployee.DataSource = dt;
+              con.Close();
+            }
+            catch (Exception exew)
+            {
+                MessageBox.Show("failed to show data make sure that you are connected to the server, please try again !");
+            }
+        } 
+
+        private void bunifuThinButton212_Click_1(object sender, EventArgs e)
+        {
+            //refresh
+            queryEmployee = " select ID_,Firstname,Lastname,Username,JobTitle,Activity,Salary,Email" +
+                               " from tblEmployee" +
+                               " INNER JOIN tblJobTitle" +
+                               " ON tblEmployee.Job_ID = tblJobTitle.id";
+            DisplayEmployee();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton216_Click(object sender, EventArgs e)
+        {
+            newEmployee ne = new newEmployee();
+            ne.Show();
+        }
+
+        private void panel6_Paint_2(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            addJobTitle aj = new addJobTitle();
+            aj.Show();
+        }
+
+        private void bunifuThinButton221_Click(object sender, EventArgs e)
+        {
+            if (radioactive.Checked)
+            {
+                queryEmployee = " select ID_,Firstname,Lastname,Username,JobTitle,Activity,Salary,Email" +
+                               " from tblEmployee" +
+                               " INNER JOIN tblJobTitle" +
+                               " ON tblEmployee.Job_ID = tblJobTitle.id" +
+                               " Where Activity = 'active' ";
+                DisplayEmployee();
+            }
+            else if (radiodeactvie.Checked)
+            {
+                queryEmployee = " select ID_,Firstname,Lastname,Username,JobTitle,Activity,Salary,Email" +
+                               " from tblEmployee" +
+                               " INNER JOIN tblJobTitle" +
+                               " ON tblEmployee.Job_ID = tblJobTitle.id" +
+                               " Where Activity = 'deactive' ";
+                DisplayEmployee();
+            }
+            else
+            {
+                MessageBox.Show("please select one selection to start searching ");
+            }
+        }
+
+        private void bunifuThinButton215_Click(object sender, EventArgs e)
+        {
+            //search textbox
+
+            queryEmployee = " select ID_,Firstname,Lastname,Username,JobTitle,Activity,Salary,Email" +
+                               " from tblEmployee" +
+                               " INNER JOIN tblJobTitle" +
+                               " ON tblEmployee.Job_ID = tblJobTitle.id"+
+                               " WHERE ID_ like '"+tbsearchEmployee.Text+"%' or Firstname like '"+tbsearchEmployee.Text+"%'  or Lastname like '"+tbsearchEmployee.Text+"%' or Username like '"+tbsearchEmployee.Text+"'";
+            DisplayEmployee();
+        }
+
+        private void bunifuThinButton222_Click(object sender, EventArgs e)
+        {
+            string index = comboBox1.SelectedIndex.ToString();
+            int x = Int32.Parse(index);
+            x++;
+            queryEmployee = " select ID_,Firstname,Lastname,Username,JobTitle,Activity,Salary,Email" +
+                               " from tblEmployee" +
+                               " INNER JOIN tblJobTitle" +
+                               " ON tblEmployee.Job_ID = tblJobTitle.id" +
+                               " where tblJobTitle.id = '"+x+"'";
+            DisplayEmployee();
+        }
+
+        private void bunifuThinButton218_Click(object sender, EventArgs e)
+        {
+            //delete from Employee
+            string sqlEmployee = "Delete from tblEmployee where ID_ = '"+Employee_ID+"'";
+            cmd = new SqlCommand(sqlEmployee,con);
+
+            if (string.IsNullOrEmpty(Employee_ID))
+            {
+                MessageBox.Show("Select a profile to DELETE");
+            }
+            else
+            {
+                try
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Deleted Successfully");
+                }
+                catch (Exception exe)
+                {
+                    MessageBox.Show(exe.Message);
+                }
+                DisplayEmployee();
+            }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void datagridEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           /* int index = e.RowIndex;
+            if (index >= 0)
+            {
+                DataGridViewRow selectedRow = datagridEmployee.Rows[index];
+                tbsearchEmployee.Text = selectedRow.Cells["ID_"].Value.ToString();
+            }*/
+        }
+
+        private void datagridEmployee_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+            int index = e.RowIndex;
+            if(index >= 0)
+            {
+                DataGridViewRow selectedRow = datagridEmployee.Rows[index];
+                Employee_ID = selectedRow.Cells["ID_"].Value.ToString();
+            }            
+        }
+
+        private void bunifuThinButton220_Click(object sender, EventArgs e)
+        {
+            string sql = "update tblEmployee set Activity = 'deactive' where ID_ = '"+Employee_ID+"'";
+            cmd = new SqlCommand(sql,con);
+            if (string.IsNullOrEmpty(Employee_ID))
+            {
+                MessageBox.Show("Select a profile to DEACTIVE");
+            }
+            else
+            {
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Changed Successfully");
+            }
+            catch(Exception exee)
+            {
+                MessageBox.Show(exee.Message);
+            }
+            DisplayEmployee();
+
+            }
+            
+            
         }
     }
 }
