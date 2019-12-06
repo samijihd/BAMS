@@ -18,6 +18,7 @@ namespace BAMS
         SqlCommand cmd;
         string query;
         string id;
+        string fname;
         string lname;
         public addAccount()
         {
@@ -78,11 +79,12 @@ namespace BAMS
         {
             id = tbid.Text.Trim();
             lname = tblname.Text.Trim();
+            fname = tbfname.Text.Trim();
             string balance = tbbalance.Text.Trim();
             string index = comboBox1.SelectedIndex.ToString();
             int x = Int32.Parse(index);
             x++;
-            query = "select * from tblCustomer where ID ='" + id + "' and lastname = '" + lname + "'";
+            query = "select * from tblCustomer where ID ='" + id + "' and firstname ='"+fname+"'";
 
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             DataTable dtbl = new DataTable();
@@ -91,8 +93,8 @@ namespace BAMS
             {
                 query = @"insert into[dbo].[tblAccount]
                 ([ID_], [AccountNo], [Iban], [CurrencyID]
-                     , [Balance], [lastname])
-                     values('" + id+"','"+accountNo()+"','"+Iban()+"','"+x+"','"+balance+"','"+lname+"')";
+                     , [Balance],[firstname],[lastname])
+                     values('" + id+"','"+accountNo()+"','"+Iban()+"','"+x+"','"+balance+"','"+tbfname.Text+"','"+lname+"')";
                 cmd = new SqlCommand(query, con);
 
                 try
@@ -104,7 +106,7 @@ namespace BAMS
                 }
                 catch (Exception ex5)
                 {
-                    MessageBox.Show("error");
+                    MessageBox.Show(ex5.Message);
                 }
             }
             else

@@ -12,6 +12,7 @@ using Bunifu;
 using BunifuAnimatorNS;
 
 
+
 namespace BAMS
 {
     public partial class Form1 : Form
@@ -22,14 +23,33 @@ namespace BAMS
         DataTable dt;
         DataSet ds = new DataSet();
         public string query;
+        public float AccBalance;
+        public float amount;
+        public float ReciverBalance;
+
         string queryEmployee = " select ID_,Firstname,Lastname,Username,JobTitle,Activity,Salary,Email" +
                                " from tblEmployee" +
                                " INNER JOIN tblJobTitle" +
                                " ON tblEmployee.Job_ID = tblJobTitle.id";
-        public int balanc;
+
+
+        string queryAcc =  " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id";
+
         public string Employee_ID ;
-        
-        
+        public string Client_ID;
+        public string Account_ID;
+        public string Account_NO;
+        public string First_Name;
+        public string Last_Name;
+        public string second="";
+        public string type = "";
+        string Amount;
+
+
+
 
         public Form1()
         {
@@ -40,7 +60,7 @@ namespace BAMS
             MoveSidePanel(btn5);
             MoveSidePanel(btn6);
             MoveSidePanel(btnDashboard);
-            
+            label4.Text = DateTime.Now.ToString();
             label2.Text = Login.user;
             hidepanels();
             
@@ -50,6 +70,53 @@ namespace BAMS
             panel10.Visible = false;
             panel3.Visible = false;
             panel6.Visible = false;
+        }
+
+        public void AddProcess()
+        {
+            
+            string query_P = "AddProcess";
+            cmd = new SqlCommand(query_P,con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@first", SqlDbType.VarChar)).Value = First_Name+" "+Last_Name;
+            cmd.Parameters.Add(new SqlParameter("@second", SqlDbType.VarChar)).Value = second;
+            cmd.Parameters.Add(new SqlParameter("@type", SqlDbType.VarChar)).Value = type;
+            cmd.Parameters.Add(new SqlParameter("@date", SqlDbType.VarChar)).Value = DateTime.Now.ToString();
+            cmd.Parameters.Add(new SqlParameter("@time", SqlDbType.VarChar)).Value = DateTime.Now.ToString();
+            cmd.Parameters.Add(new SqlParameter("@amount", SqlDbType.VarChar)).Value = Amount;
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                MessageBox.Show("Added Successfully");
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        public void DisplayProcess()
+        {
+            string query_p = "select * from tblProcesses";
+            try
+            {
+                con.Open();
+                adpt = new SqlDataAdapter(query_p, con);
+                dt = new DataTable();
+                adpt.Fill(dt);
+                dataGridView1.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void bunifuMetroTextbox3_OnValueChanged(object sender, EventArgs e)
         {
@@ -109,6 +176,8 @@ namespace BAMS
             MoveSidePanel(btn2);
             hidepanels();
             panel3.Visible = true;
+            query = "select * from tblCustomer";
+            showdata();
         }
 
         private void btn3_Click(object sender, EventArgs e)
@@ -116,6 +185,8 @@ namespace BAMS
             MoveSidePanel(btn3);
             hidepanels();
             panel10.Visible = true;
+            showAccount();
+            DisplayProcess();
         }
 
         private void btn4_Click(object sender, EventArgs e)
@@ -322,35 +393,122 @@ namespace BAMS
 
         public void checkBalance()
         {
-            SqlDataReader reader = null;
-            cmd = new SqlCommand();
+            string strBalance = "";
+            string stramt = tbamount.Text.Trim();
+            Amount = tbamount.Text.Trim();
+            string sql_Query = "select Balance from tblAccount where ID_ = '"+Account_ID+"' and AccountNo = '"+Account_NO+"'";
+            cmd = new SqlCommand(sql_Query,con);
 
-            cmd.CommandText = "getBalance";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@accountno", SqlDbType.VarChar).Value = tbsaccountno.Text;
-            cmd.Parameters.Add("@iban", SqlDbType.VarChar).Value = tbsiban.Text;
-
-            con.Open();
-            cmd.ExecuteNonQuery();
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            if (string.IsNullOrEmpty(Account_ID) || string.IsNullOrEmpty(tbamount.Text))
             {
-                balanc = Convert.ToInt32(reader);
+                MessageBox.Show("Please Select an Account to start checking");
+                Account_ID = "";
+            }
+            else
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    strBalance = reader["Balance"].ToString();
+                }
+
+                amount = float.Parse(stramt);
+                AccBalance = float.Parse(strBalance);
+
+                if (amount > AccBalance)
+                {
+                    MessageBox.Show("sorry your balance is not enough");
+                }
+                else
+                {
+                    MessageBox.Show("Your Balance is enough... YOU CAN TRANSFER THIS AMOUNT");
+                }
+                con.Close();
+            }
+        }
+        public void Send()
+        {
+            string query_Send = "UPDATE tblAccount set Balance = '"+(AccBalance - amount)+"' where AccountNo = '"+tbsaccountno.Text+"' and Iban = '"+tbsiban.Text+"'";
+            //query_Send += "update tblAccount set Balance = '"+()+"'";
+            cmd = new SqlCommand(query_Send,con);
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("the Process is completed");
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        public void getReceive_Balance()
+        {
+            string strBalance = "";
+
+            string query_receive = "select Balance from tblAccount where AccountNo ='" + tbraccountno.Text + "' and Iban ='" + tbriban.Text + "'";
+            cmd = new SqlCommand(query_receive,con);
+
+            if(string.IsNullOrEmpty(tbraccountno.Text) || string.IsNullOrEmpty(tbriban.Text))
+            {
+                MessageBox.Show("please Enter the account Number ");
+            }
+            else
+            {
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    strBalance = reader["Balance"].ToString();
+                }
+                ReciverBalance = float.Parse(strBalance);
                 con.Close();
             }
         }
 
+        public void Receive()
+        {
+            string query_receive = "update tblaccount set Balance ='" + (ReciverBalance + amount) + "' where AccountNo = '" + tbraccountno.Text + "' and Iban = '" + tbriban.Text + "'";
+            cmd = new SqlCommand(query_receive,con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("the mission complete");
+                Account_ID = "";
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
         private void bunifuThinButton29_Click(object sender, EventArgs e)
         {
             //submit
             checkBalance();
+            if (amount < AccBalance)
+            {
+                Send();
+                getReceive_Balance();
+                Receive();
+                showAccount();
+
+                type = "Transfer money";
+                second = tbraccountno.Text.Trim();
+
+                AddProcess();
+                DisplayProcess();
+            }
         }
 
         private void bunifuThinButton213_Click(object sender, EventArgs e)
         {
-            Deposit d = new Deposit();
-            d.Show();
+            
         }
 
         private void bunifuThinButton211_Click(object sender, EventArgs e)
@@ -365,8 +523,7 @@ namespace BAMS
 
         private void bunifuThinButton214_Click(object sender, EventArgs e)
         {
-            Transfer t = new Transfer();
-            t.Show();
+            
         }
 
         private void panel6_Paint(object sender, PaintEventArgs e)
@@ -474,7 +631,29 @@ namespace BAMS
      
         private void bunifuThinButton27_Click_1(object sender, EventArgs e)
         {
-            
+            string SqlClient = "Delete from tblCustomer where ID ='"+Client_ID+"'";
+
+            cmd = new SqlCommand(SqlClient,con);
+
+            if (string.IsNullOrEmpty(Client_ID))
+            {
+                MessageBox.Show("Select a profile to Delete");
+            }
+            else
+            {
+                try
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Deleted Successfully");
+                }
+                catch(Exception ex2)
+                {
+                    MessageBox.Show(ex2.Message);
+                }
+                showdata();
+            }
         }
 
         private void bunifuThinButton210_Click(object sender, EventArgs e)
@@ -482,16 +661,133 @@ namespace BAMS
             panel10.AutoScrollPosition = new Point(0, 190);
         }
 
+        float AccBalanceD;
+        public void Deposite1()
+        {
+
+            string strBalance = "";
+            string stramt = tbamount.Text.Trim();
+            string sql_Query = "select Balance from tblAccount where ID_ = '" + Account_ID + "' and AccountNo ='" + Account_NO + "'";
+            cmd = new SqlCommand(sql_Query, con);
+
+            if (string.IsNullOrEmpty(Account_ID) || string.IsNullOrEmpty(tbamount.Text))
+            {
+                MessageBox.Show("Please Select an Account to start checking");
+                
+            }
+            else
+            {
+                Amount = tbamount.Text.Trim();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    strBalance = reader["Balance"].ToString();
+                }
+
+                amount = float.Parse(stramt);
+                AccBalanceD = float.Parse(strBalance);
+                con.Close();
+                Deposite2();
+            }
+        }
+         
+        public void Deposite2()
+        {
+            string query_receive = "update tblaccount set Balance ='" + (AccBalanceD + amount) + "' where ID_ = '"+Account_ID+"' and AccountNo ='"+Account_NO+"'";
+            cmd = new SqlCommand(query_receive, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("the mission complete");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            Account_ID = "";
+            Account_NO = "";
+            tbamount.Text = "";
+            AccBalanceD = 0;
+            
+            amount = 0;
+
+        }
         private void bunifuThinButton28_Click_1(object sender, EventArgs e)
         {
-            Deposit d = new Deposit();
-            d.Show();
+            //deposite
+            Deposite1();
+            showAccount();
+
+            second = "-";
+            type = "Deposite";
+            AddProcess();
+            DisplayProcess();
         }
 
+        float AccBalanceW;
+        public void Withdraw1()
+        {
+            string strBalance = "";
+            string stramt = tbamount.Text.Trim();
+            string sql_Query = "select Balance from tblAccount where ID_ = '" + Account_ID + "' and AccountNo ='" + Account_NO + "'";
+            cmd = new SqlCommand(sql_Query, con);
+
+            if (string.IsNullOrEmpty(Account_ID) || string.IsNullOrEmpty(tbamount.Text))
+            {
+                MessageBox.Show("Please Select an Account to start checking");
+                Account_ID = "";
+            }
+            else
+            {
+                Amount = tbamount.Text.Trim();
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    strBalance = reader["Balance"].ToString();
+                }
+
+                amount = float.Parse(stramt);
+                AccBalanceW = float.Parse(strBalance);
+                con.Close();
+                Withdraw2();
+            }
+        }
+        public void Withdraw2()
+        {
+            string query_ = "update tblaccount set Balance ='" + (AccBalanceW - amount) + "' where ID_ = '" + Account_ID + "' and AccountNo ='" + Account_NO + "'";
+            cmd = new SqlCommand(query_, con);
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("the mission complete");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            Account_ID = "";
+            Account_NO = "";
+            AccBalanceW = 0;
+            amount = 0;
+            tbamount.Text = "";
+        }
         private void bunifuThinButton26_Click_2(object sender, EventArgs e)
         {
-            Transfer t = new Transfer();
-            t.Show();
+            //withdraw
+            Withdraw1();
+            showAccount();
+
+            type = "withdraw";
+            second = " ";
+
+            AddProcess();
+            DisplayProcess();
         }
 
         private void groupBox5_Enter(object sender, EventArgs e)
@@ -634,8 +930,24 @@ namespace BAMS
         {
 
         }
-
+        /*
+         * ********************************   ***********
+         * *******************************   ************
+         * *******************************   *************
+         * ***************                   **************  
+         * ***************                   ***************                
+         * ***************                   ****************            *******
+         * *******************************   *****************          **********
+         * *******************************   *********  *******        ******* 
+         * *******************************   *********   *******      *******
+         * ***************                   *********    *******    *******
+         * ***************                   *********     *******  *******
+         * ***************                   *********      **************
+         * *******************************   *********       ************
+         * *******************************   *********        **********
+         * *******************************   *********         ********
         
+             */
 
         private void datagridEmployee_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -645,9 +957,9 @@ namespace BAMS
                 DataGridViewRow selectedRow = datagridEmployee.Rows[index];
                 tbsearchEmployee.Text = selectedRow.Cells["ID_"].Value.ToString();
             }*/
-        }
+    }
 
-        private void datagridEmployee_CellClick_1(object sender, DataGridViewCellEventArgs e)
+    private void datagridEmployee_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
             int index = e.RowIndex;
@@ -685,6 +997,103 @@ namespace BAMS
             }
             
             
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton23_Click_1(object sender, EventArgs e)
+        {
+            query = "select * from tblCustomer where firstname like '" + tbsearch.Text + "%' or ID like '" + tbsearch.Text + "%' ";
+            showdata();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void gridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void gridview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (index >= 0)
+            {
+                DataGridViewRow selectedRow = gridview.Rows[index];
+                Client_ID = selectedRow.Cells["ID"].Value.ToString();
+            }
+        }
+        public void showAccount()
+        {
+            try
+            {
+                con.Open();
+                adpt = new SqlDataAdapter(queryAcc, con);
+                dt = new DataTable();
+                adpt.Fill(dt);
+                dataAccount.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void bunifuThinButton213_Click_1(object sender, EventArgs e)
+        {
+            queryAcc = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id";
+
+            showAccount();
+        }
+
+        private void bunifuThinButton211_Click_1(object sender, EventArgs e)
+        {
+            queryAcc = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where ID_ like '" + tbsearchAccount.Text + "%' or firstname like '" + tbsearchAccount.Text + "%' or AccountNo like '" + tbsearchAccount.Text + "%' or Iban like '" + tbsearchAccount.Text + "%' ";
+
+            showAccount();
+        }
+
+        private void dataAccount_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (index >= 0)
+            {
+                DataGridViewRow selectedRow = dataAccount.Rows[index];
+                Account_ID = selectedRow.Cells["ID_"].Value.ToString();
+                Account_NO = selectedRow.Cells["AccountNo"].Value.ToString();
+                First_Name = selectedRow.Cells["firstname"].Value.ToString();
+                Last_Name = selectedRow.Cells["lastname"].Value.ToString();
+                tbsaccountno.Text = selectedRow.Cells["AccountNo"].Value.ToString();
+                tbsiban.Text = selectedRow.Cells["Iban"].Value.ToString();
+            }
+        }
+
+        private void bunifuThinButton214_Click_1(object sender, EventArgs e)
+        {
+            checkBalance();
+        }
+
+        private void dataAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

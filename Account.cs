@@ -17,7 +17,7 @@ namespace BAMS
         SqlCommand cmd;
         SqlDataAdapter adpt;
         DataTable dt;
-        string query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+        string query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id";
@@ -40,7 +40,7 @@ namespace BAMS
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -74,7 +74,7 @@ namespace BAMS
 
         private void bunifuThinButton24_Click(object sender, EventArgs e)
         {
-            query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+            query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id";
@@ -84,7 +84,7 @@ namespace BAMS
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            query = "select * from tblAccount where ID_ like '"+tbsearch.Text+"%' or AccountNo like '"+tbsearch.Text+"%' or Iban like '"+tbsearch.Text+"%' ";
+            query = "select * from tblAccount where ID_ like '"+tbsearch.Text+"%' or firstname like '"+tbsearch.Text+"%' or AccountNo like '"+tbsearch.Text+"%' or Iban like '"+tbsearch.Text+"%' ";
             showAccount();
         }
 
@@ -92,7 +92,7 @@ namespace BAMS
         {
             if (usdradio.Checked)
             {
-                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id" +
@@ -101,7 +101,7 @@ namespace BAMS
             }
             else if (eurradio.Checked)
             {
-                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id" +
@@ -110,7 +110,7 @@ namespace BAMS
             }
             else if (gbpradio.Checked)
             {
-                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id" +
@@ -119,7 +119,7 @@ namespace BAMS
             }
             else if (chpradio.Checked)
             {
-                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id" +
@@ -136,7 +136,7 @@ namespace BAMS
         {
             string from = tbfrom.Text.Trim();
             string to = tbto.Text.Trim();
-            query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,lastname" +
+            query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id" +
