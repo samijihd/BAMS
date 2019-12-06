@@ -24,6 +24,10 @@ namespace BAMS
         {
             InitializeComponent();
             BindData();
+
+            tbid.Text = Account.Account_ID_;
+            tbfname.Text = Account.First_Name_;
+            tblname.Text = Account.Last_Name_;
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -84,7 +88,7 @@ namespace BAMS
             string index = comboBox1.SelectedIndex.ToString();
             int x = Int32.Parse(index);
             x++;
-            query = "select * from tblCustomer where ID ='" + id + "' and firstname ='"+fname+"'";
+            query = "select * from tblCustomer where ID ='" + id + "' and firstname ='"+fname+"' and lastname = '"+lname+"'";
 
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
             DataTable dtbl = new DataTable();

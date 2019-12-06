@@ -21,6 +21,10 @@ namespace BAMS
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id";
+
+        public static string Account_ID_;
+        public static string First_Name_;
+        public static string Last_Name_;
         public Account()
         {
             InitializeComponent();
@@ -58,8 +62,16 @@ namespace BAMS
 
         private void bunifuThinButton23_Click(object sender, EventArgs e)
         {
-            addAccount adc = new addAccount();
-            adc.Show();
+            if(string.IsNullOrEmpty(Account_ID_) && string.IsNullOrEmpty(First_Name_)  && string.IsNullOrEmpty(Last_Name_))
+            {
+                MessageBox.Show("Please Select a client to add");
+            }
+            else
+            {
+                addAccount adc = new addAccount();
+                adc.Show();
+            }
+            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -114,7 +126,7 @@ namespace BAMS
                        " FROM tblAccount " +
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id" +
-                       " where CurrencyType = 'GBP'";
+                       " where CurrencyType = 'BGP'";
                 showAccount();
             }
             else if (chpradio.Checked)
@@ -153,6 +165,19 @@ namespace BAMS
         {
             addCurrency curr = new addCurrency();
             curr.Show();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (index >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                Account_ID_ = selectedRow.Cells["ID_"].Value.ToString();
+                First_Name_ = selectedRow.Cells["firstname"].Value.ToString();
+                Last_Name_ = selectedRow.Cells["lastname"].Value.ToString();
+
+            }
         }
     }
 }

@@ -261,7 +261,7 @@
             this.panel3.Controls.Add(this.panel9);
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.ForeColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Location = new System.Drawing.Point(201, 83);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1089, 637);
             this.panel3.TabIndex = 9;
@@ -532,7 +532,7 @@
             this.panel6.Controls.Add(this.tbsearchEmployee);
             this.panel6.Controls.Add(this.bunifuThinButton212);
             this.panel6.Controls.Add(this.datagridEmployee);
-            this.panel6.Location = new System.Drawing.Point(197, 86);
+            this.panel6.Location = new System.Drawing.Point(197, 82);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1096, 641);
             this.panel6.TabIndex = 57;
@@ -1110,7 +1110,6 @@
             // panel10
             // 
             this.panel10.AutoScroll = true;
-            this.panel10.Controls.Add(this.panel3);
             this.panel10.Controls.Add(this.tbamount);
             this.panel10.Controls.Add(this.bunifuThinButton214);
             this.panel10.Controls.Add(this.dataGridView1);
@@ -1537,6 +1536,7 @@
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1293, 760);
             this.Controls.Add(this.panel6);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel2);
