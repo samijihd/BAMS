@@ -201,9 +201,9 @@ namespace BAMS
         {
             MoveSidePanel(btn5);
             hidepanels();
-            Account a = new Account();
+            Account aaa = new Account();
             this.Hide();
-            a.Show();
+            aaa.Show();
         }
         public void BindData()
         {
@@ -718,13 +718,21 @@ namespace BAMS
         private void bunifuThinButton28_Click_1(object sender, EventArgs e)
         {
             //deposite
-            Deposite1();
-            showAccount();
+            if (string.IsNullOrEmpty(tbamount.Text))
+            {
+                MessageBox.Show("please enter a vailed amount value!");
+            }
+            else
+            {
+                Deposite1();
+                showAccount();
 
-            second = "-";
-            type = "Deposite";
-            AddProcess();
-            DisplayProcess();
+                second = "-";
+                type = "Deposite";
+                AddProcess();
+                DisplayProcess();
+            }
+            
         }
 
         float AccBalanceW;
@@ -780,14 +788,23 @@ namespace BAMS
         private void bunifuThinButton26_Click_2(object sender, EventArgs e)
         {
             //withdraw
-            Withdraw1();
-            showAccount();
 
-            type = "withdraw";
-            second = " ";
+            if (string.IsNullOrEmpty(tbamount.Text))
+            {
+                MessageBox.Show("please enter a vailed amount value!");
+            }
+            else
+            {
+                Withdraw1();
+                showAccount();
 
-            AddProcess();
-            DisplayProcess();
+                type = "withdraw";
+                second = " ";
+
+                AddProcess();
+                DisplayProcess();
+            }
+            
         }
 
         private void groupBox5_Enter(object sender, EventArgs e)
@@ -1094,6 +1111,44 @@ namespace BAMS
         private void panel10_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void bunifuThinButton219_Click(object sender, EventArgs e)
+        {
+            string sql = "update tblEmployee set Activity = 'active' where ID_ = '" + Employee_ID + "'";
+            cmd = new SqlCommand(sql, con);
+            if (string.IsNullOrEmpty(Employee_ID))
+            {
+                MessageBox.Show("Select a profile to ACTIVATION");
+            }
+            else
+            {
+
+                try
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Changed Successfully");
+                }
+                catch (Exception exee)
+                {
+                    MessageBox.Show(exee.Message);
+                }
+                DisplayEmployee();
+
+            }
+        }
+
+        private void bunifuThinButton217_Click(object sender, EventArgs e)
+        {
+            EditEmployee ee = new EditEmployee();
+            ee.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            BindData();
         }
     }
 }
