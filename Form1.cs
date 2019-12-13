@@ -38,7 +38,7 @@ namespace BAMS
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id";
 
-        public string Employee_ID ;
+        public static string Employee_ID ;
         public string Client_ID;
         public string Account_ID;
         public string Account_NO;
@@ -47,6 +47,12 @@ namespace BAMS
         public string second="";
         public string type = "";
         string Amount;
+
+        public static string Emp_fName;
+        public static string Emp_lName;
+        public static string Emp_password;
+        public static string Emp_salary;
+        public static string Emp_email;
 
 
 
@@ -984,6 +990,10 @@ namespace BAMS
             {
                 DataGridViewRow selectedRow = datagridEmployee.Rows[index];
                 Employee_ID = selectedRow.Cells["ID_"].Value.ToString();
+                Emp_fName = selectedRow.Cells["Firstname"].Value.ToString();
+                Emp_lName = selectedRow.Cells["Lastname"].Value.ToString();
+                Emp_salary = selectedRow.Cells["Salary"].Value.ToString();
+                Emp_email = selectedRow.Cells["Email"].Value.ToString();
             }            
         }
 
@@ -1142,8 +1152,15 @@ namespace BAMS
 
         private void bunifuThinButton217_Click(object sender, EventArgs e)
         {
-            EditEmployee ee = new EditEmployee();
-            ee.Show();
+            if (string.IsNullOrEmpty(Employee_ID) && string.IsNullOrEmpty(Emp_fName))
+            {
+                MessageBox.Show("please select a row to edit");
+            }
+            else
+            {
+                EditEmployee ee = new EditEmployee();
+                ee.Show();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -19,6 +19,13 @@ namespace BAMS
         public EditEmployee()
         {
             InitializeComponent();
+            BindData();
+
+            tbfname.Text = Form1.Emp_fName;
+            tblname.Text = Form1.Emp_lName;
+            tbsalary.Text = Form1.Emp_salary;
+            tbemail.Text = Form1.Emp_email;
+
         }
         public void BindData()
         {
@@ -39,6 +46,38 @@ namespace BAMS
         private void EditEmployee_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void bunifuThinButton219_Click(object sender, EventArgs e)
+        {
+            query = "Edit_Employee";
+            cmd = new SqlCommand(query,con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            string index = comboBox1.SelectedIndex.ToString();
+            int x = Int32.Parse(index);
+            x++;
+            cmd.Parameters.Add(new SqlParameter("@id_", SqlDbType.VarChar)).Value = Form1.Employee_ID;
+            cmd.Parameters.Add(new SqlParameter("@firstname", SqlDbType.VarChar)).Value = tbfname.Text;
+            cmd.Parameters.Add(new SqlParameter("@lastname", SqlDbType.VarChar)).Value = tblname.Text;
+            cmd.Parameters.Add(new SqlParameter("@pass", SqlDbType.VarChar)).Value = tbpassword.Text;
+            cmd.Parameters.Add(new SqlParameter("@jobid", SqlDbType.VarChar)).Value = x;
+            cmd.Parameters.Add(new SqlParameter("@salary", SqlDbType.VarChar)).Value = tbsalary.Text;
+            cmd.Parameters.Add(new SqlParameter("@email", SqlDbType.VarChar)).Value = tbemail.Text;
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                MessageBox.Show("changed successfully");
+
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
