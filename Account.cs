@@ -22,9 +22,9 @@ namespace BAMS
                        " INNER JOIN tblCurrency" +
                        " ON tblAccount.CurrencyID = tblCurrency.id";
 
-        public static string Account_ID_;
-        public static string First_Name_;
-        public static string Last_Name_;
+        public static string _Account_ID;
+        public static string _First_Name;
+        public static string _Last_Name;
         public Account()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace BAMS
                 adpt = new SqlDataAdapter(query, con);
                 dt = new DataTable();
                 adpt.Fill(dt);
-                dataGridView1.DataSource = dt;
+                edataGridView1.DataSource = dt;
                 con.Close();
             }
             catch(Exception ex)
@@ -62,7 +62,7 @@ namespace BAMS
 
         private void bunifuThinButton23_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(Account_ID_) && string.IsNullOrEmpty(First_Name_)  && string.IsNullOrEmpty(Last_Name_))
+            if(string.IsNullOrEmpty(_Account_ID) && string.IsNullOrEmpty(_First_Name)  && string.IsNullOrEmpty(_Last_Name))
             {
                 MessageBox.Show("Please Select a client to add");
             }
@@ -96,7 +96,7 @@ namespace BAMS
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            query = "select * from tblAccount where ID_ like '"+tbsearch.Text+"%' or firstname like '"+tbsearch.Text+"%' or AccountNo like '"+tbsearch.Text+"%' or Iban like '"+tbsearch.Text+"%' ";
+            query = "select * from tblAccount where ID_ like '"+tbsearch1.Text+"%' or firstname like '"+tbsearch1.Text+"%' or AccountNo like '"+tbsearch1.Text+"%' or Iban like '"+tbsearch1.Text+"%' ";
             showAccount();
         }
 
@@ -172,10 +172,10 @@ namespace BAMS
             int index = e.RowIndex;
             if (index >= 0)
             {
-                DataGridViewRow selectedRow = dataGridView1.Rows[index];
-                Account_ID_ = selectedRow.Cells["ID_"].Value.ToString();
-                First_Name_ = selectedRow.Cells["firstname"].Value.ToString();
-                Last_Name_ = selectedRow.Cells["lastname"].Value.ToString();
+                DataGridViewRow selectedRow = edataGridView1.Rows[index];
+                _Account_ID = selectedRow.Cells["ID_"].Value.ToString();
+                _First_Name = selectedRow.Cells["firstname"].Value.ToString();
+                _Last_Name = selectedRow.Cells["lastname"].Value.ToString();
 
             }
         }

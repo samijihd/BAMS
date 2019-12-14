@@ -24,10 +24,19 @@ namespace BAMS
         SqlDataAdapter adpt;
         DataTable dt;
         DataSet ds = new DataSet();
-        public string query;
+        public string query_;
         public float AccBalance;
         public float amount;
         public float ReciverBalance;
+
+        public static string _Account_ID;
+        public static string _First_Name;
+        public static string _Last_Name;
+
+        string query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id";
 
         string queryEmployee = " select ID_,Firstname,Lastname,Username,JobTitle,Activity,Salary,Email" +
                                " from tblEmployee" +
@@ -119,8 +128,25 @@ namespace BAMS
             panel3.Visible = false;
             panel6.Visible = false;
             panel1.Visible = false;
+            panel11.Visible = false;
         }
 
+        public void showAccounts()
+        {
+            try
+            {
+                con.Open();
+                adpt = new SqlDataAdapter(query, con);
+                dt = new DataTable();
+                adpt.Fill(dt);
+                edataGridView1.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         public void numUSD()
         {
             string n = "";
@@ -533,7 +559,7 @@ namespace BAMS
             MoveSidePanel(btn2);
             hidepanels();
             panel3.Visible = true;
-            query = "select * from tblCustomer";
+            query_ = "select * from tblCustomer";
             showdata();
         }
 
@@ -548,25 +574,25 @@ namespace BAMS
 
         private void btn4_Click(object sender, EventArgs e)
         {
+
             MoveSidePanel(btn4);
             hidepanels();
-            Cards cd = new Cards();
-            cd.Show();
+            /*Cards cd = new Cards();
+            cd.Show();*/
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
             MoveSidePanel(btn5);
             hidepanels();
-            Account aaa = new Account();
-            this.Hide();
-            aaa.Show();
+            panel11.Visible = true;
+            showAccounts();
         }
         public void BindData()
         {
             con.Open();
-            query = "select id,JobTitle from tblJobTitle";
-            cmd = new SqlCommand(query, con);
+            query_ = "select id,JobTitle from tblJobTitle";
+            cmd = new SqlCommand(query_, con);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
             DataTable dt = new DataTable();
@@ -634,11 +660,6 @@ namespace BAMS
         }
 
         private void nColorButton1_ColorChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuThinButton25_Click(object sender, EventArgs e)
         {
 
         }
@@ -932,7 +953,7 @@ namespace BAMS
             {
                 con.Open();
                 //cmd = new SqlCommand();
-                adpt = new SqlDataAdapter(query, con);
+                adpt = new SqlDataAdapter(query_, con);
                 dt = new DataTable();
                 adpt.Fill(dt);
                 gridview.DataSource = dt;
@@ -945,13 +966,13 @@ namespace BAMS
         }
         private void bunifuThinButton21_Click_1(object sender, EventArgs e)
         {
-            query = "select * from tblCustomer";
+            query_ = "select * from tblCustomer";
             showdata();
         }
 
         private void bunifuThinButton22_Click(object sender, EventArgs e)
         {
-            query = "select * from tblCustomer";
+            query_ = "select * from tblCustomer";
             showdata();
         }
 
@@ -959,17 +980,17 @@ namespace BAMS
         {
             if (maleradio.Checked)
             {
-                query = "select * from tblCustomer where Gender='male'";
+                query_ = "select * from tblCustomer where Gender='male'";
                 showdata();
             }
             else if (femaleradio.Checked)
             {
-                query = "select * from tblCustomer where Gender='female'";
+                query_ = "select * from tblCustomer where Gender='female'";
                 showdata();
             }
             else if (otherradio.Checked)
             {
-                query = "select * from tblCustomer where Gender='other'";
+                query_ = "select * from tblCustomer where Gender='other'";
                 showdata();
             }
             else
@@ -981,7 +1002,7 @@ namespace BAMS
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            query = "select * from tblCustomer where firstname like '"+tbsearch.Text+"%' or ID like '"+tbsearch.Text+"%' ";
+            query_ = "select * from tblCustomer where firstname like '"+tbsearch.Text+"%' or ID like '"+tbsearch.Text+"%' ";
             showdata();
         }
 
@@ -1384,7 +1405,7 @@ namespace BAMS
 
         private void bunifuThinButton23_Click_1(object sender, EventArgs e)
         {
-            query = "select * from tblCustomer where firstname like '" + tbsearch.Text + "%' or ID like '" + tbsearch.Text + "%' ";
+            query_ = "select * from tblCustomer where firstname like '" + tbsearch.Text + "%' or ID like '" + tbsearch.Text + "%' ";
             showdata();
         }
 
@@ -1564,6 +1585,115 @@ namespace BAMS
         }
 
         private void chpgua_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
+
+        private void edataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (index >= 0)
+            {
+                DataGridViewRow selectedRow = edataGridView1.Rows[index];
+                _Account_ID = selectedRow.Cells["ID_"].Value.ToString();
+                _First_Name = selectedRow.Cells["firstname"].Value.ToString();
+                _Last_Name = selectedRow.Cells["lastname"].Value.ToString();
+
+            }
+        }
+
+        private void bunifuThinButton232_Click(object sender, EventArgs e)
+        {
+            query = "select * from tblAccount where ID_ like '" + tbsearch1.Text + "%' or firstname like '" + tbsearch1.Text + "%' or AccountNo like '" + tbsearch1.Text + "%' or Iban like '" + tbsearch1.Text + "%' ";
+            showAccounts();
+        }
+
+        private void bunifuThinButton230_Click(object sender, EventArgs e)
+        {
+            query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id";
+
+            showAccounts();
+        }
+
+        private void bunifuThinButton231_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_Account_ID) && string.IsNullOrEmpty(_First_Name) && string.IsNullOrEmpty(_Last_Name))
+            {
+                MessageBox.Show("Please Select a client to add");
+            }
+            else
+            {
+                addAccount adc = new addAccount();
+                adc.Show();
+            }
+        }
+
+        private void bunifuThinButton229_Click(object sender, EventArgs e)
+        {
+            if (usdradio.Checked)
+            {
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where CurrencyType = 'USD'";
+                showAccounts();
+            }
+            else if (eurradio.Checked)
+            {
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where CurrencyType = 'EUR'";
+                showAccounts();
+            }
+            else if (gbpradio.Checked)
+            {
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where CurrencyType = 'BGP'";
+                showAccounts();
+            }
+            else if (chpradio.Checked)
+            {
+                query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where CurrencyType = 'CHP'";
+                showAccounts();
+            }
+            else
+            {
+                MessageBox.Show("please select the correct item");
+            }
+        }
+
+        private void bunifuThinButton228_Click(object sender, EventArgs e)
+        {
+            string from = tbfrom.Text.Trim();
+            string to = tbto.Text.Trim();
+            query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
+                       " FROM tblAccount " +
+                       " INNER JOIN tblCurrency" +
+                       " ON tblAccount.CurrencyID = tblCurrency.id" +
+                       " where Balance between " + from + " and " + to + "";
+            showAccounts();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addCurrency curr = new addCurrency();
+            curr.Show();
+        }
+
+        private void tbamount_SelectedItemChanged(object sender, EventArgs e)
         {
 
         }

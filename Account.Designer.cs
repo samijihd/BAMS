@@ -39,8 +39,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tbsearch = new System.Windows.Forms.TextBox();
+            this.edataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tbsearch1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.eurradio = new System.Windows.Forms.RadioButton();
             this.chpradio = new System.Windows.Forms.RadioButton();
@@ -69,7 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Update.SuspendLayout();
@@ -96,6 +96,7 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1231, 101);
             this.panel1.TabIndex = 9;
@@ -110,6 +111,7 @@
             this.bunifuImageButton2.ImageActive = null;
             this.bunifuImageButton2.InitialImage = null;
             this.bunifuImageButton2.Location = new System.Drawing.Point(1141, 12);
+            this.bunifuImageButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuImageButton2.Name = "bunifuImageButton2";
             this.bunifuImageButton2.Size = new System.Drawing.Size(36, 34);
             this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -128,6 +130,7 @@
             this.bunifuImageButton1.ImageActive = null;
             this.bunifuImageButton1.InitialImage = null;
             this.bunifuImageButton1.Location = new System.Drawing.Point(1183, 12);
+            this.bunifuImageButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuImageButton1.Name = "bunifuImageButton1";
             this.bunifuImageButton1.Size = new System.Drawing.Size(36, 34);
             this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -151,8 +154,9 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(51, 27);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(50, 49);
+            this.pictureBox2.Size = new System.Drawing.Size(51, 49);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
@@ -163,6 +167,7 @@
             this.panel3.Controls.Add(this.label19);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 101);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1231, 84);
             this.panel3.TabIndex = 21;
@@ -178,30 +183,32 @@
             this.label19.TabIndex = 30;
             this.label19.Text = "Account";
             // 
-            // dataGridView1
+            // edataGridView1
             // 
-            this.dataGridView1.AllowDrop = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dataGridView1.Location = new System.Drawing.Point(357, 327);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(839, 510);
-            this.dataGridView1.TabIndex = 26;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.edataGridView1.AllowDrop = true;
+            this.edataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.edataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.edataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.edataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.edataGridView1.GridColor = System.Drawing.SystemColors.AppWorkspace;
+            this.edataGridView1.Location = new System.Drawing.Point(357, 327);
+            this.edataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.edataGridView1.Name = "edataGridView1";
+            this.edataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.edataGridView1.RowTemplate.Height = 24;
+            this.edataGridView1.Size = new System.Drawing.Size(839, 510);
+            this.edataGridView1.TabIndex = 26;
+            this.edataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.edataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // tbsearch
+            // tbsearch1
             // 
-            this.tbsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbsearch.Location = new System.Drawing.Point(182, 242);
-            this.tbsearch.Name = "tbsearch";
-            this.tbsearch.Size = new System.Drawing.Size(603, 38);
-            this.tbsearch.TabIndex = 40;
+            this.tbsearch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbsearch1.Location = new System.Drawing.Point(181, 242);
+            this.tbsearch1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbsearch1.Name = "tbsearch1";
+            this.tbsearch1.Size = new System.Drawing.Size(603, 38);
+            this.tbsearch1.TabIndex = 40;
             // 
             // groupBox1
             // 
@@ -212,7 +219,9 @@
             this.groupBox1.Controls.Add(this.bunifuThinButton22);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(31, 327);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Size = new System.Drawing.Size(292, 117);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
@@ -222,6 +231,7 @@
             // 
             this.eurradio.AutoSize = true;
             this.eurradio.Location = new System.Drawing.Point(85, 30);
+            this.eurradio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.eurradio.Name = "eurradio";
             this.eurradio.Size = new System.Drawing.Size(58, 21);
             this.eurradio.TabIndex = 40;
@@ -233,6 +243,7 @@
             // 
             this.chpradio.AutoSize = true;
             this.chpradio.Location = new System.Drawing.Point(221, 30);
+            this.chpradio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chpradio.Name = "chpradio";
             this.chpradio.Size = new System.Drawing.Size(57, 21);
             this.chpradio.TabIndex = 39;
@@ -244,6 +255,7 @@
             // 
             this.gbpradio.AutoSize = true;
             this.gbpradio.Location = new System.Drawing.Point(149, 30);
+            this.gbpradio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbpradio.Name = "gbpradio";
             this.gbpradio.Size = new System.Drawing.Size(58, 21);
             this.gbpradio.TabIndex = 39;
@@ -255,6 +267,7 @@
             // 
             this.usdradio.AutoSize = true;
             this.usdradio.Location = new System.Drawing.Point(21, 30);
+            this.usdradio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.usdradio.Name = "usdradio";
             this.usdradio.Size = new System.Drawing.Size(58, 21);
             this.usdradio.TabIndex = 38;
@@ -281,7 +294,7 @@
             this.bunifuThinButton22.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton22.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.bunifuThinButton22.Location = new System.Drawing.Point(221, 54);
-            this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.bunifuThinButton22.Name = "bunifuThinButton22";
             this.bunifuThinButton22.Size = new System.Drawing.Size(57, 55);
             this.bunifuThinButton22.TabIndex = 37;
@@ -298,8 +311,10 @@
             this.groupBox2.Controls.Add(this.bunifuThinButton25);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(31, 463);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(292, 120);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(292, 121);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "show by balance";
@@ -307,7 +322,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(98, 66);
+            this.label3.Location = new System.Drawing.Point(99, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(16, 17);
             this.label3.TabIndex = 40;
@@ -334,7 +349,8 @@
             // tbto
             // 
             this.tbto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbto.Location = new System.Drawing.Point(123, 56);
+            this.tbto.Location = new System.Drawing.Point(123, 57);
+            this.tbto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbto.Name = "tbto";
             this.tbto.Size = new System.Drawing.Size(71, 30);
             this.tbto.TabIndex = 38;
@@ -342,7 +358,8 @@
             // tbfrom
             // 
             this.tbfrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbfrom.Location = new System.Drawing.Point(21, 56);
+            this.tbfrom.Location = new System.Drawing.Point(21, 57);
+            this.tbfrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbfrom.Name = "tbfrom";
             this.tbfrom.Size = new System.Drawing.Size(71, 30);
             this.tbfrom.TabIndex = 38;
@@ -366,7 +383,7 @@
             this.bunifuThinButton25.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton25.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.bunifuThinButton25.Location = new System.Drawing.Point(221, 36);
-            this.bunifuThinButton25.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuThinButton25.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.bunifuThinButton25.Name = "bunifuThinButton25";
             this.bunifuThinButton25.Size = new System.Drawing.Size(57, 55);
             this.bunifuThinButton25.TabIndex = 37;
@@ -381,8 +398,10 @@
             this.Update.Controls.Add(this.tbid);
             this.Update.Controls.Add(this.bunifuThinButton21);
             this.Update.ForeColor = System.Drawing.Color.White;
-            this.Update.Location = new System.Drawing.Point(31, 611);
+            this.Update.Location = new System.Drawing.Point(31, 610);
+            this.Update.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Update.Name = "Update";
+            this.Update.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Update.Size = new System.Drawing.Size(292, 226);
             this.Update.TabIndex = 44;
             this.Update.TabStop = false;
@@ -402,7 +421,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(58, 45);
+            this.label6.Location = new System.Drawing.Point(59, 46);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 25);
             this.label6.TabIndex = 39;
@@ -412,8 +431,9 @@
             // 
             this.tbbalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbbalance.Location = new System.Drawing.Point(103, 103);
+            this.tbbalance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbbalance.Name = "tbbalance";
-            this.tbbalance.Size = new System.Drawing.Size(134, 34);
+            this.tbbalance.Size = new System.Drawing.Size(135, 34);
             this.tbbalance.TabIndex = 38;
             this.tbbalance.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -421,8 +441,9 @@
             // 
             this.tbid.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbid.Location = new System.Drawing.Point(103, 39);
+            this.tbid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbid.Name = "tbid";
-            this.tbid.Size = new System.Drawing.Size(134, 34);
+            this.tbid.Size = new System.Drawing.Size(135, 34);
             this.tbid.TabIndex = 38;
             // 
             // bunifuThinButton21
@@ -443,8 +464,8 @@
             this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.White;
             this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuThinButton21.Location = new System.Drawing.Point(221, 163);
-            this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuThinButton21.Location = new System.Drawing.Point(221, 162);
+            this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.bunifuThinButton21.Name = "bunifuThinButton21";
             this.bunifuThinButton21.Size = new System.Drawing.Size(57, 55);
             this.bunifuThinButton21.TabIndex = 37;
@@ -474,7 +495,7 @@
             this.btnDashboard.IdleForecolor = System.Drawing.Color.Transparent;
             this.btnDashboard.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnDashboard.Location = new System.Drawing.Point(784, 230);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(5);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(127, 60);
             this.btnDashboard.TabIndex = 41;
@@ -499,10 +520,10 @@
             this.bunifuThinButton24.IdleFillColor = System.Drawing.Color.White;
             this.bunifuThinButton24.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton24.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuThinButton24.Location = new System.Drawing.Point(953, 235);
-            this.bunifuThinButton24.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuThinButton24.Location = new System.Drawing.Point(953, 230);
+            this.bunifuThinButton24.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.bunifuThinButton24.Name = "bunifuThinButton24";
-            this.bunifuThinButton24.Size = new System.Drawing.Size(94, 55);
+            this.bunifuThinButton24.Size = new System.Drawing.Size(93, 60);
             this.bunifuThinButton24.TabIndex = 39;
             this.bunifuThinButton24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton24.Click += new System.EventHandler(this.bunifuThinButton24_Click);
@@ -525,19 +546,20 @@
             this.bunifuThinButton23.IdleFillColor = System.Drawing.Color.White;
             this.bunifuThinButton23.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton23.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.bunifuThinButton23.Location = new System.Drawing.Point(1067, 235);
-            this.bunifuThinButton23.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuThinButton23.Location = new System.Drawing.Point(1067, 230);
+            this.bunifuThinButton23.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.bunifuThinButton23.Name = "bunifuThinButton23";
-            this.bunifuThinButton23.Size = new System.Drawing.Size(110, 55);
+            this.bunifuThinButton23.Size = new System.Drawing.Size(109, 60);
             this.bunifuThinButton23.TabIndex = 38;
             this.bunifuThinButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton23.Click += new System.EventHandler(this.bunifuThinButton23_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(21, 216);
+            this.button1.Location = new System.Drawing.Point(31, 242);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 45);
+            this.button1.Size = new System.Drawing.Size(80, 46);
             this.button1.TabIndex = 45;
             this.button1.Text = "+ new currency";
             this.button1.UseVisualStyleBackColor = true;
@@ -554,13 +576,14 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDashboard);
-            this.Controls.Add(this.tbsearch);
+            this.Controls.Add(this.tbsearch1);
             this.Controls.Add(this.bunifuThinButton24);
             this.Controls.Add(this.bunifuThinButton23);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.edataGridView1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Account";
             this.Text = "Account";
             this.Load += new System.EventHandler(this.Account_Load);
@@ -571,7 +594,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -594,11 +617,11 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView edataGridView1;
         private ns1.BunifuThinButton2 bunifuThinButton23;
         private ns1.BunifuThinButton2 bunifuThinButton22;
         private ns1.BunifuThinButton2 bunifuThinButton24;
-        private System.Windows.Forms.TextBox tbsearch;
+        private System.Windows.Forms.TextBox tbsearch1;
         private System.Windows.Forms.GroupBox Update;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;

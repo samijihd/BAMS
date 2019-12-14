@@ -25,9 +25,9 @@ namespace BAMS
             InitializeComponent();
             BindData();
 
-            tbid.Text = Account.Account_ID_;
-            tbfname.Text = Account.First_Name_;
-            tblname.Text = Account.Last_Name_;
+            tbid.Text = Form1._Account_ID;
+            tbfname.Text = Form1._First_Name;
+            tblname.Text = Form1._Last_Name;
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
