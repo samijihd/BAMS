@@ -39,6 +39,7 @@ namespace BAMS
             string phone = tbphone.Text.Trim();
             string job = tbjob.Text.Trim();
             string address = tbaddress.Text.Trim();
+            string branch = tbbranch.Text.Trim();
 
 
             
@@ -77,9 +78,10 @@ namespace BAMS
            ,[Job]
            ,[Address]
            ,[Gender]
-           ,[Birth])
+           ,[Birth]
+           ,[Branch])
      VALUES
-           ('" + firstname + "','" + lastname + "','" + email + "','" + phone + "','" + job + "','" + address + "','" + gender + "','" + birth + "')";
+           ('" + firstname + "','" + lastname + "','" + email + "','" + phone + "','" + job + "','" + address + "','" + gender + "','" + birth + "','"+branch+"')";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
@@ -91,9 +93,9 @@ namespace BAMS
                     con.Close();
                     MessageBox.Show("The new client added successfully");
                 }
-                catch
+                catch(Exception ec)
                 {
-                    MessageBox.Show("error to add new client, please try again");
+                    MessageBox.Show(ec.Message);
                 }
             }
         }

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Bunifu;
 using BunifuAnimatorNS;
+using System.Windows.Media;
+
 
 
 
@@ -54,7 +56,23 @@ namespace BAMS
         public static string Emp_salary;
         public static string Emp_email;
 
+        public static string Account_ID_;
+        public static string First_Name_;
+        public static string Last_Name_;
 
+        public float num_USD;
+        public float num_EUR;
+        public float num_BGP;
+        public float num_CHP;
+        public float num_TR;
+        public float num_NIS;
+
+        string usd = "";
+        string eur = "";
+        string bgp = "";
+        string chp = "";
+        string tr = "";
+        string nis = "";
 
 
         public Form1()
@@ -66,18 +84,351 @@ namespace BAMS
             MoveSidePanel(btn5);
             MoveSidePanel(btn6);
             MoveSidePanel(btnDashboard);
+
             label4.Text = DateTime.Now.ToString();
+            
             label2.Text = Login.user;
             hidepanels();
-            
+            panel1.Visible = true;
+            getUSD();
+            getEUR();
+            getBGP();
+            getCHP();
+            getNIS();
+            getTR();
+            this.chart1.Series["usd"].Points.AddXY("USD", num_USD);
+            this.chart1.Series["usd"].Points.AddXY("EUR", num_EUR);
+            this.chart1.Series["usd"].Points.AddXY("BGP", num_BGP);
+            this.chart1.Series["usd"].Points.AddXY("CHP", num_CHP);
+            this.chart1.Series["usd"].Points.AddXY("TR", num_TR);
+            this.chart1.Series["usd"].Points.AddXY("NIS", num_NIS);
+
+            numUSD();
+            numEUR();
+            numBGP();
+            numCHP();
+            numTR();
+            numNIS();
+
+            //solidGauge1.ToColor = Color.FromRgb(11, 211, 1);
+
         }
         private void hidepanels()
         {
             panel10.Visible = false;
             panel3.Visible = false;
             panel6.Visible = false;
+            panel1.Visible = false;
         }
 
+        public void numUSD()
+        {
+            string n = "";
+            float u;
+            string C_query = "select count(CurrencyID) as Totbalance from tblAccount where CurrencyID = 1";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    n = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            u = float.Parse(n);
+            usdGua.To = 1000;
+            usdGua.Value = u;
+        }
+        public void numEUR()
+        {
+            string n = "";
+            float u;
+            string C_query = "select count(CurrencyID) as Totbalance from tblAccount where CurrencyID = 2";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    n = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            u = float.Parse(n);
+            eurgua.To = 100;
+            eurgua.Value = u;
+        }
+        public void numBGP()
+        {
+            string n = "";
+            float u;
+            string C_query = "select count(CurrencyID) as Totbalance from tblAccount where CurrencyID = 3";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    n = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            u = float.Parse(n);
+            bgpgua.To = 100;
+            bgpgua.Value = u;
+        }
+        public void numCHP()
+        {
+            string n = "";
+            float u;
+            string C_query = "select count(CurrencyID) as Totbalance from tblAccount where CurrencyID = 4";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    n = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            u = float.Parse(n);
+            chpgua.To = 100;
+            chpgua.Value = u;
+        }
+        public void numTR()
+        {
+            string n = "";
+            float u;
+            string C_query = "select count(CurrencyID) as Totbalance from tblAccount where CurrencyID = 5";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    n = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            u = float.Parse(n);
+            trgua.To = 100;
+            trgua.Value = u;
+        }
+        public void numNIS()
+        {
+            string n = "";
+            float u;
+            string C_query = "select count(CurrencyID) as Totbalance from tblAccount where CurrencyID = 6";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    n = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            u = float.Parse(n);
+            nisgua.To = 1000;
+            nisgua.Value = u;
+        }
+        
+
+        public void getUSD()
+        {
+            string C_query = "select sum(Balance) as Totbalance from tblAccount where CurrencyID = 1";
+            
+           /* string C_query = "select CurrencyType, count(CurrencyID) as TotBalance"
+                            +" from tblAccount"
+                            +" INNER JOIN tblCurrency"
+                            +" FROM tblAccount.CurrencyID = tblCurrency.id"
+                            +" group by CurrencyType";*/
+            
+            cmd = new SqlCommand(C_query,con);
+                             
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    usd = rd["Totbalance"].ToString();
+                }
+                con.Close();
+                
+            } 
+            catch(Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            num_USD = float.Parse(usd);
+            
+        }
+
+        public void getEUR()
+        {
+            string C_query = "select sum(Balance) as Totbalance from tblAccount where CurrencyID = 2";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    eur = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            num_EUR = float.Parse(eur);
+            
+        }
+
+        public void getBGP()
+        {
+            string C_query = "select sum(Balance) as Totbalance from tblAccount where CurrencyID = 3";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    bgp = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            num_BGP = float.Parse(bgp);
+            
+        }
+
+        public void getCHP()
+        {
+            string C_query = "select sum(Balance) as Totbalance from tblAccount where CurrencyID = 4";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    chp = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            num_CHP = float.Parse(chp);
+            
+        }
+        public void getTR()
+        {
+            string C_query = "select sum(Balance) as Totbalance from tblAccount where CurrencyID = 5";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    tr = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            num_TR = float.Parse(tr);
+            this.chart1.Series["usd"].Points.AddXY("TR", num_TR);
+        }
+        public void getNIS()
+        {
+            string C_query = "select sum(Balance) as Totbalance from tblAccount where CurrencyID = 6";
+            cmd = new SqlCommand(C_query, con);
+
+            try
+            {
+                con.Open();
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    nis = rd["Totbalance"].ToString();
+                }
+                con.Close();
+
+            }
+            catch (Exception excc)
+            {
+                MessageBox.Show(excc.Message);
+            }
+            num_NIS = float.Parse(nis);
+            
+        }
+
+       
         public void AddProcess()
         {
             
@@ -157,8 +508,8 @@ namespace BAMS
         {
             MoveSidePanel(btnDashboard);
             hidepanels();
-           // panel10.Visible = true;
-           // panel6.Visible = true;
+            panel1.Visible = true;
+            
         }
 
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
@@ -1054,6 +1405,9 @@ namespace BAMS
             {
                 DataGridViewRow selectedRow = gridview.Rows[index];
                 Client_ID = selectedRow.Cells["ID"].Value.ToString();
+                Account_ID_ = selectedRow.Cells["ID"].Value.ToString();
+                First_Name_ = selectedRow.Cells["firstname"].Value.ToString();
+                Last_Name_ = selectedRow.Cells["lastname"].Value.ToString();
             }
         }
         public void showAccount()
@@ -1166,6 +1520,52 @@ namespace BAMS
         private void button3_Click(object sender, EventArgs e)
         {
             BindData();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void solidGauge1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
+
+        private void gridview_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton224_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Account_ID_) && string.IsNullOrEmpty(First_Name_) && string.IsNullOrEmpty(Last_Name_))
+            {
+                MessageBox.Show("Please Select a client to add");
+            }
+            else
+            {
+
+                Form_account fa = new Form_account();
+                fa.Show();
+            }
+        }
+
+        private void bunifuThinButton223_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login l = new Login();
+            l.Show();
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chpgua_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
         }
     }
 }
