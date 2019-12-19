@@ -73,11 +73,21 @@ namespace BAMS
             sda.Fill(dtbl);
             if (dtbl.Rows.Count > 0)
             {
-                query = @"insert into[dbo].[tblAccount]
+
+                string sql_query = "AddAccount";
+                /*query = @"insert into[dbo].[tblAccount]
                 ([ID_], [AccountNo], [Iban], [CurrencyID]
                      , [Balance],[firstname],[lastname])
-                     values('" + id + "','" + accountNo() + "','" + Iban() + "','" + x + "','" + balance + "','" + tbfname.Text + "','" + lname + "')";
-                cmd = new SqlCommand(query, con);
+                     values('" + id + "','" + accountNo() + "','" + Iban() + "','" + x + "','" + balance + "','" + tbfname.Text + "','" + lname + "')";*/
+                cmd = new SqlCommand(sql_query, con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar)).Value = id;
+                cmd.Parameters.Add(new SqlParameter("@accountno", SqlDbType.VarChar)).Value = accountNo();
+                cmd.Parameters.Add(new SqlParameter("@iban", SqlDbType.VarChar)).Value = Iban();
+                cmd.Parameters.Add(new SqlParameter("@currencyid", SqlDbType.VarChar)).Value = x;
+                cmd.Parameters.Add(new SqlParameter("@balance", SqlDbType.VarChar)).Value = balance;
+                cmd.Parameters.Add(new SqlParameter("@firstname", SqlDbType.VarChar)).Value = fname;
+                cmd.Parameters.Add(new SqlParameter("@lastname", SqlDbType.VarChar)).Value = lname;
 
                 try
                 {
