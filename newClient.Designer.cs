@@ -50,16 +50,16 @@
             this.bunifuDragControl1 = new ns1.BunifuDragControl(this.components);
             this.bunifuElipse1 = new ns1.BunifuElipse(this.components);
             this.label6 = new System.Windows.Forms.Label();
-            this.tbjob = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.maleradio = new System.Windows.Forms.RadioButton();
             this.femaleradio = new System.Windows.Forms.RadioButton();
             this.otherradio = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.tbbranch = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -287,19 +287,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Corbel", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(89, 276);
+            this.label6.Location = new System.Drawing.Point(91, 276);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 23);
             this.label6.TabIndex = 32;
             this.label6.Text = "Job";
-            // 
-            // tbjob
-            // 
-            this.tbjob.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbjob.Location = new System.Drawing.Point(90, 302);
-            this.tbjob.Name = "tbjob";
-            this.tbjob.Size = new System.Drawing.Size(225, 38);
-            this.tbjob.TabIndex = 31;
             // 
             // groupBox1
             // 
@@ -335,7 +327,7 @@
             this.femaleradio.AutoSize = true;
             this.femaleradio.Font = new System.Drawing.Font("Corbel", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.femaleradio.ForeColor = System.Drawing.Color.White;
-            this.femaleradio.Location = new System.Drawing.Point(90, 31);
+            this.femaleradio.Location = new System.Drawing.Point(120, 31);
             this.femaleradio.Name = "femaleradio";
             this.femaleradio.Size = new System.Drawing.Size(82, 25);
             this.femaleradio.TabIndex = 37;
@@ -348,7 +340,7 @@
             this.otherradio.AutoSize = true;
             this.otherradio.Font = new System.Drawing.Font("Corbel", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.otherradio.ForeColor = System.Drawing.Color.White;
-            this.otherradio.Location = new System.Drawing.Point(183, 31);
+            this.otherradio.Location = new System.Drawing.Point(232, 31);
             this.otherradio.Name = "otherradio";
             this.otherradio.Size = new System.Drawing.Size(72, 25);
             this.otherradio.TabIndex = 38;
@@ -364,7 +356,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(90, 180);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(266, 79);
+            this.groupBox2.Size = new System.Drawing.Size(344, 79);
             this.groupBox2.TabIndex = 39;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gender";
@@ -372,8 +364,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBox2);
+            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.tbbranch);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.tbfname);
             this.panel2.Controls.Add(this.label6);
@@ -382,7 +375,6 @@
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.tblname);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.tbjob);
             this.panel2.Controls.Add(this.birthpicher);
             this.panel2.Controls.Add(this.bunifuThinButton29);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -390,17 +382,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(670, 746);
             this.panel2.TabIndex = 40;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // label5
+            // comboBox2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Corbel", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(89, 100);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 23);
-            this.label5.TabIndex = 40;
-            this.label5.Text = "Birthday";
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(93, 301);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(222, 39);
+            this.comboBox2.TabIndex = 45;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(352, 301);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(222, 39);
+            this.comboBox1.TabIndex = 44;
             // 
             // label7
             // 
@@ -413,13 +413,16 @@
             this.label7.TabIndex = 42;
             this.label7.Text = "Branch";
             // 
-            // tbbranch
+            // label5
             // 
-            this.tbbranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbbranch.Location = new System.Drawing.Point(349, 302);
-            this.tbbranch.Name = "tbbranch";
-            this.tbbranch.Size = new System.Drawing.Size(225, 38);
-            this.tbbranch.TabIndex = 41;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Corbel", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(89, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 23);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "Birthday";
             // 
             // newClient
             // 
@@ -467,7 +470,6 @@
         private ns1.BunifuDragControl bunifuDragControl1;
         private ns1.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbjob;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton otherradio;
         private System.Windows.Forms.RadioButton maleradio;
@@ -478,6 +480,7 @@
         private ns1.BunifuImageButton bunifuImageButton2;
         private ns1.BunifuImageButton bunifuImageButton1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tbbranch;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

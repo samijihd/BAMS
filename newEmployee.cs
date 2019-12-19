@@ -86,7 +86,7 @@ namespace BAMS
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show(ex.Message);
             }
         }
 

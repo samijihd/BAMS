@@ -468,7 +468,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Corbel", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(734, 30);
+            this.label4.Location = new System.Drawing.Point(703, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 23);
             this.label4.TabIndex = 117;
@@ -492,7 +492,7 @@
             this.bunifuThinButton23.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(87)))), ((int)(((byte)(76)))));
             this.bunifuThinButton23.IdleForecolor = System.Drawing.Color.White;
             this.bunifuThinButton23.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.bunifuThinButton23.Location = new System.Drawing.Point(738, 354);
+            this.bunifuThinButton23.Location = new System.Drawing.Point(707, 349);
             this.bunifuThinButton23.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton23.Name = "bunifuThinButton23";
             this.bunifuThinButton23.Size = new System.Drawing.Size(139, 46);
@@ -517,7 +517,7 @@
             this.bunifuThinButton22.IdleFillColor = System.Drawing.Color.White;
             this.bunifuThinButton22.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(181)))), ((int)(((byte)(21)))));
             this.bunifuThinButton22.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-            this.bunifuThinButton22.Location = new System.Drawing.Point(738, 301);
+            this.bunifuThinButton22.Location = new System.Drawing.Point(707, 296);
             this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton22.Name = "bunifuThinButton22";
             this.bunifuThinButton22.Size = new System.Drawing.Size(139, 43);
@@ -527,7 +527,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(693, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(662, 55);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(212, 227);
             this.pictureBox1.TabIndex = 114;

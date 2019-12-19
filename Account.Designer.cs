@@ -294,7 +294,7 @@
             this.bunifuThinButton22.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton22.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.bunifuThinButton22.Location = new System.Drawing.Point(221, 54);
-            this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton22.Name = "bunifuThinButton22";
             this.bunifuThinButton22.Size = new System.Drawing.Size(57, 55);
             this.bunifuThinButton22.TabIndex = 37;
@@ -383,7 +383,7 @@
             this.bunifuThinButton25.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton25.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.bunifuThinButton25.Location = new System.Drawing.Point(221, 36);
-            this.bunifuThinButton25.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.bunifuThinButton25.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton25.Name = "bunifuThinButton25";
             this.bunifuThinButton25.Size = new System.Drawing.Size(57, 55);
             this.bunifuThinButton25.TabIndex = 37;
@@ -465,7 +465,7 @@
             this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.bunifuThinButton21.Location = new System.Drawing.Point(221, 162);
-            this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton21.Name = "bunifuThinButton21";
             this.bunifuThinButton21.Size = new System.Drawing.Size(57, 55);
             this.bunifuThinButton21.TabIndex = 37;
@@ -495,7 +495,7 @@
             this.btnDashboard.IdleForecolor = System.Drawing.Color.Transparent;
             this.btnDashboard.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnDashboard.Location = new System.Drawing.Point(784, 230);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(5);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(127, 60);
             this.btnDashboard.TabIndex = 41;
@@ -521,7 +521,7 @@
             this.bunifuThinButton24.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton24.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.bunifuThinButton24.Location = new System.Drawing.Point(953, 230);
-            this.bunifuThinButton24.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.bunifuThinButton24.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton24.Name = "bunifuThinButton24";
             this.bunifuThinButton24.Size = new System.Drawing.Size(93, 60);
             this.bunifuThinButton24.TabIndex = 39;
@@ -547,7 +547,7 @@
             this.bunifuThinButton23.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
             this.bunifuThinButton23.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.bunifuThinButton23.Location = new System.Drawing.Point(1067, 230);
-            this.bunifuThinButton23.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.bunifuThinButton23.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton23.Name = "bunifuThinButton23";
             this.bunifuThinButton23.Size = new System.Drawing.Size(109, 60);
             this.bunifuThinButton23.TabIndex = 38;

@@ -32,6 +32,7 @@ namespace BAMS
         public static string _Account_ID;
         public static string _First_Name;
         public static string _Last_Name;
+        
 
         string query = " SELECT ID_,AccountNo,Iban,CurrencyType,Balance,firstname,lastname" +
                        " FROM tblAccount " +
@@ -68,6 +69,7 @@ namespace BAMS
         public static string Account_ID_;
         public static string First_Name_;
         public static string Last_Name_;
+        
 
         public float num_USD;
         public float num_EUR;
@@ -92,6 +94,7 @@ namespace BAMS
             MoveSidePanel(btn4);
             MoveSidePanel(btn5);
             MoveSidePanel(btn6);
+            MoveSidePanel(btn7);
             MoveSidePanel(btnDashboard);
 
             label4.Text = DateTime.Now.ToString();
@@ -129,6 +132,8 @@ namespace BAMS
             panel6.Visible = false;
             panel1.Visible = false;
             panel11.Visible = false;
+            panel13.Visible = false;
+            panel14.Visible = false;
         }
 
         public void showAccounts()
@@ -486,7 +491,7 @@ namespace BAMS
 
         public void DisplayProcess()
         {
-            string query_p = "select * from tblProcesses";
+            string query_p = "select * from vWprocesses";
             try
             {
                 con.Open();
@@ -559,7 +564,7 @@ namespace BAMS
             MoveSidePanel(btn2);
             hidepanels();
             panel3.Visible = true;
-            query_ = "select * from tblCustomer";
+            query_ = "select * from vWCustomerdata";
             showdata();
         }
 
@@ -571,14 +576,34 @@ namespace BAMS
             showAccount();
             DisplayProcess();
         }
-
+        /***************************************************************************************************************/
+        /***************************************** Removed **************************************************************/
+        /******************************************************************************************************************/
+        public void DisplayRemovedCustomer()
+        {
+            string sql = "SELECT * FROM vWRemovedCustomers";
+            try
+            {
+                con.Open();
+                //cmd = new SqlCommand();
+                adpt = new SqlDataAdapter(sql, con);
+                dt = new DataTable();
+                adpt.Fill(dt);
+                dataGridView2.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void btn4_Click(object sender, EventArgs e)
         {
 
             MoveSidePanel(btn4);
             hidepanels();
-            /*Cards cd = new Cards();
-            cd.Show();*/
+            panel13.Visible = true;
+            DisplayRemovedCustomer();
         }
 
         private void btn5_Click(object sender, EventArgs e)
@@ -946,7 +971,14 @@ namespace BAMS
         {
 
         }
-
+        /* *************************              customer **************************************** 
+         ************************************         ********************************************** *
+         ***************************************************** *********************************************** *
+         ***************************************************************************************************
+         ******************************************************************************************************
+         **************************************************************customer ***********************************
+         *********************************************************************************************************
+         *********************************************************************************************************/
         public void showdata()
         {
             try
@@ -972,7 +1004,7 @@ namespace BAMS
 
         private void bunifuThinButton22_Click(object sender, EventArgs e)
         {
-            query_ = "select * from tblCustomer";
+            query_ = "select * from vWCustomerdata";
             showdata();
         }
 
@@ -980,17 +1012,17 @@ namespace BAMS
         {
             if (maleradio.Checked)
             {
-                query_ = "select * from tblCustomer where Gender='male'";
+                query_ = "select * from vWCustomerdata where Gender='Male'";
                 showdata();
             }
             else if (femaleradio.Checked)
             {
-                query_ = "select * from tblCustomer where Gender='female'";
+                query_ = "select * from vWCustomerdata where Gender='Female'";
                 showdata();
             }
             else if (otherradio.Checked)
             {
-                query_ = "select * from tblCustomer where Gender='other'";
+                query_ = "select * from vWCustomerdata where Gender='Other'";
                 showdata();
             }
             else
@@ -1002,17 +1034,17 @@ namespace BAMS
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            query_ = "select * from tblCustomer where firstname like '"+tbsearch.Text+"%' or ID like '"+tbsearch.Text+"%' ";
+            query_ = "select * from vWCustomerdata where firstname like '" + tbsearch.Text+"%' or ID like '"+tbsearch.Text+"%' ";
             showdata();
         }
 
      
         private void bunifuThinButton27_Click_1(object sender, EventArgs e)
         {
-            string SqlClient = "Delete from tblCustomer where ID ='"+Client_ID+"'";
-
+            string SqlClient = "deleteCustomer";
             cmd = new SqlCommand(SqlClient,con);
-
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id", SqlDbType.VarChar)).Value = Client_ID;
             if (string.IsNullOrEmpty(Client_ID))
             {
                 MessageBox.Show("Select a profile to Delete");
@@ -1405,7 +1437,7 @@ namespace BAMS
 
         private void bunifuThinButton23_Click_1(object sender, EventArgs e)
         {
-            query_ = "select * from tblCustomer where firstname like '" + tbsearch.Text + "%' or ID like '" + tbsearch.Text + "%' ";
+            query_ = "select * from vWCustomerdata where firstname like '" + tbsearch.Text + "%' or ID like '" + tbsearch.Text + "%' ";
             showdata();
         }
 
@@ -1696,6 +1728,93 @@ namespace BAMS
         private void tbamount_SelectedItemChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void trgua_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton233_Click(object sender, EventArgs e)
+        {
+            query_ = "select * from vWDsplyBranch";
+            showdata();
+        }
+
+        private void bunifuThinButton234_Click(object sender, EventArgs e)
+        {
+            query_ = "select * from vWDsplyJob";
+            showdata();
+        }
+
+        private void bunifuThinButton226_Click(object sender, EventArgs e)
+        {
+            Account aco = new Account();
+            aco.Show();
+            this.Close();
+        }
+        public void DisplyCard()
+        {
+            string sql = "SELECT * FROM vWDisplyCards";
+            try
+            {
+                con.Open();
+                //cmd = new SqlCommand();
+                adpt = new SqlDataAdapter(sql, con);
+                dt = new DataTable();
+                adpt.Fill(dt);
+                dataGridView3.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void bunifuThinButton236_Click(object sender, EventArgs e)
+        {
+            MoveSidePanel(btn7);
+            hidepanels();
+            panel14.Visible = true;
+            DisplyCard();
+        }
+
+        private void bunifuThinButton235_Click(object sender, EventArgs e)
+        {
+            string _sql = "select * from vWRemovedCustomers where _ID  like '"+_tbsearch.Text+"%' or _firstname like '"+_tbsearch.Text+"%' or _lastname like '"+_tbsearch.Text+"%'";
+            try
+            {
+                con.Open();
+                //cmd = new SqlCommand();
+                adpt = new SqlDataAdapter(_sql, con);
+                dt = new DataTable();
+                adpt.Fill(dt);
+                dataGridView2.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void bunifuThinButton237_Click(object sender, EventArgs e)
+        {
+            string sql = "SELECT * FROM vWDisplyCards where ID like '" + tbcardsearch.Text + "%' or firstname like '" + tbcardsearch.Text + "%'";
+            try
+            {
+                con.Open();
+                //cmd = new SqlCommand();
+                adpt = new SqlDataAdapter(sql, con);
+                dt = new DataTable();
+                adpt.Fill(dt);
+                dataGridView3.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
