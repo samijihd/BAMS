@@ -193,5 +193,11 @@ namespace BAMS
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            newBranch nb = new newBranch();
+            nb.Show();
+        }
     }
 }

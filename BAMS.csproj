@@ -139,6 +139,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="newBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newBranch.Designer.cs">
+      <DependentUpon>newBranch.cs</DependentUpon>
+    </Compile>
     <Compile Include="newClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newBranch.resx">
+      <DependentUpon>newBranch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="newClient.resx">
       <DependentUpon>newClient.cs</DependentUpon>
