@@ -13,7 +13,7 @@ Employee sayfasında çalışanların ve yönetmenlerin bilgilerinin üzerinde f
 Verileri kaydetmek için SQL server platformu kullanılacak,
 ve kullanıcı arayüzü için c# ve vs.NET platformları kullanılacak
 
-written by: Sami KWHAIREH
+written by: Sami KHWAIREH
 
 # HOME
 home sayfasında bankada var olan çeşitli para birimleri ile banka hesap bakiyeleri chart bileşnleri kullanarak gösterilmektedir
